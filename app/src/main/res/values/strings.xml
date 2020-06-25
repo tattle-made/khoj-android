@@ -2,4 +2,8 @@
     <string name="app_name">Khoj</string>
     <string name="welcome_to_khoj">Welcome to Khoj!</string>
     <string name="logo">logo</string>
+    <string name="next">next</string>
+    <string name="use_khoj_to_fact_check">Use Khoj to fact check the latest news articles and whatsapp forwards</string>
+    <string name="get_fake_news_list">View handpicked fake news articles curated just for you</string>
+    <string name="welcome_to_khoj_intro">Welcome to Khoj, your window to the world of fake news</string>
 </resources>

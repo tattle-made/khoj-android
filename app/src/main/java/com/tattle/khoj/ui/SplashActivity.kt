@@ -6,15 +6,15 @@ import android.os.Handler
 import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.tattle.khoj.R
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_splash.*
 
-class MainActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     lateinit var runnable: Runnable
     lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splash)
 
         //start handler to go to next screen
         startHandler()
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startNextActivity() {
-        startActivity(Intent(this, LandingActivity::class.java))
+        startActivity(Intent(this, IntroActivity::class.java))
     }
 
     private fun startHandler() {
