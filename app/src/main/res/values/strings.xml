@@ -6,4 +6,16 @@
     <string name="use_khoj_to_fact_check">Use Khoj to fact check the latest news articles and whatsapp forwards</string>
     <string name="get_fake_news_list">View handpicked fake news articles curated just for you</string>
     <string name="welcome_to_khoj_intro">Welcome to Khoj, your window to the world of fake news</string>
+    <string name="hello">Hello</string>
+    <string name="fact_check_rumors">We fact check rumors you receive on Whatsapp</string>
+    <string name="try_it">Try it!</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="More">more</string>
+    <string name="offline">You are offline, please connect to internet and try again</string>
+    <string name="error_occurred">We are encountering error in getting data, please try again in some time</string>
+    <string name="loading_data">Working our magic, please wait…</string>
+    <string name="refresh">refresh</string>
+    <string name="beware_fake_news">Beware of these fake news articles</string>
+    <string name="share_family">Share with your family</string>
 </resources>
