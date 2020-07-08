@@ -35,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startNextActivity() {
-        startActivity(Intent(this, IntroActivity::class.java))
+        startActivity(Intent(this, HomepageActivity::class.java))
     }
 
     private fun startHandler() {

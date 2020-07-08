@@ -35,15 +35,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/border_top_rounded"
-            app:layout_constraintBottom_toBottomOf="@+id/imgShare"
-            app:layout_constraintEnd_toEndOf="@+id/imgShare"
-            app:layout_constraintStart_toStartOf="@+id/imgShare"
-            app:layout_constraintTop_toTopOf="@+id/imgShare" />
-
         <TextView
             android:id="@+id/tvShareHead"
             android:layout_width="0dp"
