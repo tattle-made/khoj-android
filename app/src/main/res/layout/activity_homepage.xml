@@ -41,11 +41,11 @@
                     android:layout_marginTop="@dimen/page_margin"
                     android:drawableEnd="@drawable/ic_namaste_small"
                     android:drawablePadding="@dimen/top_margin"
+                    android:fontFamily="@font/bitter_bold"
                     android:gravity="center_vertical"
                     android:text="@string/hello"
                     android:textColor="@color/secondaryTextColor"
-                    android:textSize="@dimen/toolbar_big_text"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/toolbar_big_text" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -84,9 +84,7 @@
         <FrameLayout
             android:id="@+id/fragment_home"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/navHome"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarHomepage" />
+            android:layout_height="0dp" />
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -97,8 +95,6 @@
         app:itemHorizontalTranslationEnabled="true"
         app:itemIconTint="@color/bottom_navigation_text"
         app:itemTextColor="@color/bottom_navigation_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/home_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

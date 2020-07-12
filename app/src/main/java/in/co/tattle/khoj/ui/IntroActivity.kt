@@ -1,6 +1,10 @@
 package `in`.co.tattle.khoj.ui
 
+import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
+import `in`.co.tattle.khoj.model.IntroObject
+import `in`.co.tattle.khoj.ui.adapters.IntroAdapter
+import `in`.co.tattle.khoj.ui.home.HomepageActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View.INVISIBLE
@@ -8,15 +12,11 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
-import `in`.co.tattle.khoj.model.IntroObject
-import `in`.co.tattle.khoj.ui.adapters.IntroAdapter
-import `in`.co.tattle.khoj.ui.home.HomepageActivity
 import kotlinx.android.synthetic.main.activity_intro.*
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
 
     private lateinit var introAdapter: IntroAdapter
 

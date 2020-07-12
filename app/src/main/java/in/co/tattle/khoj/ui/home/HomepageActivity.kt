@@ -1,5 +1,6 @@
 package `in`.co.tattle.khoj.ui.home
 
+import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.ui.home.historyfragment.HistoryFragment
 import `in`.co.tattle.khoj.ui.home.homefragment.HomeNewsFragment
@@ -7,12 +8,11 @@ import `in`.co.tattle.khoj.ui.home.morefragment.MoreFragment
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.activity_homepage.*
 
-class HomepageActivity : AppCompatActivity() {
+class HomepageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)

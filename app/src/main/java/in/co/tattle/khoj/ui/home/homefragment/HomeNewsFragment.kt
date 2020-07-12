@@ -37,13 +37,14 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
 
         imgRefresh.setOnClickListener(this)
 
-        setupObservers()
         setupRecyclerView()
+        setupObservers()
     }
 
     private fun setupRecyclerView() {
         recyclerHome.layoutManager = LinearLayoutManager(context)
-        recyclerHome.adapter = context?.let { HomeNewsAdapter(it) }
+        homeNewsAdapter = HomeNewsAdapter(context!!)
+        recyclerHome.adapter = homeNewsAdapter
     }
 
     private fun setupObservers() {
@@ -55,7 +56,7 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
                 Status.SUCCESS -> {
                     result.data?.let { homepageData ->
                         showHome()
-                        (recyclerHome.adapter as HomeNewsAdapter).updateData(homepageData[0])
+                        homeNewsAdapter.updateData(homepageData[0])
                     }
                 }
                 Status.ERROR -> {

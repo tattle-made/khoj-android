@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    android:padding="@dimen/page_margin"
+    tools:context=".ui.setup.SetupActivity">
+
+    <TextView
+        android:id="@+id/tvNamaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:drawableEnd="@drawable/ic_namaste_small"
+        android:drawablePadding="@dimen/top_margin"
+        android:text="@string/namaste"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/toolbar_big_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin"
+        android:drawableEnd="@drawable/ic_hello"
+        android:drawablePadding="@dimen/top_margin"
+        android:text="@string/hello"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/toolbar_big_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNamaste" />
+
+    <TextView
+        android:id="@+id/tvChooseHin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:gravity="center"
+        android:text="@string/choose_language_hin"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/big_text"
+        app:layout_constraintTop_toBottomOf="@id/tvHello" />
+
+    <TextView
+        android:id="@+id/tvChooseEng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin"
+        android:gravity="center"
+        android:text="@string/choose_language"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/big_text"
+        app:layout_constraintTop_toBottomOf="@id/tvChooseHin" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnHindi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:paddingTop="@dimen/page_margin"
+        android:paddingBottom="@dimen/page_margin"
+        android:text="@string/hindi"
+        android:textColor="@color/primaryColor"
+        android:textSize="@dimen/big_text"
+        app:backgroundTint="@color/secondaryTextColor"
+        app:layout_constraintEnd_toStartOf="@id/btnEnglish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvChooseEng" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEnglish"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/top_margin"
+        android:layout_marginTop="@dimen/big_margin"
+        android:paddingTop="@dimen/page_margin"
+        android:paddingBottom="@dimen/page_margin"
+        android:text="@string/english"
+        android:textColor="@color/primaryColor"
+        android:textSize="@dimen/big_text"
+        app:backgroundTint="@color/secondaryTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnHindi"
+        app:layout_constraintTop_toBottomOf="@id/tvChooseEng" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

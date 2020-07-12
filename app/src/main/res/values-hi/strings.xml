@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Khoj</string>
+    <string name="welcome_to_khoj">खोज ऐप में आपका स्वागत है!</string>
+    <string name="logo">logo</string>
+    <string name="next">next</string>
+    <string name="use_khoj_to_fact_check">वास्तव में नवीनतम समाचार लेखों और व्हाट्सएप की जांच करने के लिए खोज का उपयोग करें</string>
+    <string name="get_fake_news_list">केवल आपके लिए घुमावदार नकली समाचार लेख देखें</string>
+    <string name="welcome_to_khoj_intro">खोज में आपका स्वागत है, फर्जी खबरों की दुनिया में आपकी खिड़की</string>
+    <string name="hello">Hello</string>
+    <string name="namaste">नमस्ते</string>
+    <string name="fact_check_rumors">हमारे यहाँ वाट्सेप्प पे मिली अफवाहों की जाँच करी जाती हैं|</string>
+    <string name="try_it">ट्राई करें</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="More">more</string>
+    <string name="offline">आप ऑफ़लाइन हैं, कृपया इंटरनेट से कनेक्ट करें और पुनः प्रयास करें</string>
+    <string name="error_occurred">हमें डेटा प्राप्त करने में त्रुटि हो रही है, कृपया कुछ समय बाद पुनः प्रयास करें</string>
+    <string name="loading_data">हमारा जादू काम कर रहा है, कृपया प्रतीक्षा करें…</string>
+    <string name="refresh">refresh</string>
+    <string name="beware_fake_news">इन अफवाहों से सावधान</string>
+    <string name="share_family">परीवार में शेयर करें</string>
+    <string name="choose_language">कृपया अपनी पसंदीदा भाषा चुनें</string>
+    <string name="choose_language_hin">कृपया अपनी पसंदीदा भाषा चुनें</string>
+    <string name="hindi">हिन्दी</string>
+    <string name="english">English</string>
+</resources>
