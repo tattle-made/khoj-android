@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "376087268542",
+    "firebase_url": "https://tattle-khoj.firebaseio.com",
+    "project_id": "tattle-khoj",
+    "storage_bucket": "tattle-khoj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376087268542:android:2bff61af80fc181d4762ef",
+        "android_client_info": {
+          "package_name": "in.co.tattle.khoj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376087268542-eajlb717peqqma1bnjf81o4dkjbm41dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMPTgS7Q13ulsqmi7PVNOHSgDIWMA2RwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376087268542-eajlb717peqqma1bnjf81o4dkjbm41dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

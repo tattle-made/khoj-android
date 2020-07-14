@@ -22,11 +22,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/secondaryTextColor"
+        app:layout_constraintTop_toBottomOf="@id/tvNamaste" />
+
     <TextView
         android:id="@+id/tvHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginTop="@dimen/page_margin"
         android:drawableEnd="@drawable/ic_hello"
         android:drawablePadding="@dimen/top_margin"
         android:text="@string/hello"
@@ -34,7 +44,7 @@
         android:textSize="@dimen/toolbar_big_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNamaste" />
+        app:layout_constraintTop_toBottomOf="@id/separator" />
 
     <TextView
         android:id="@+id/tvChooseHin"

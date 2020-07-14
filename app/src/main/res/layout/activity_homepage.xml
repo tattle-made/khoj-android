@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contentScrim="@color/secondaryColor"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlwaysCollapsed"
-            app:scrimAnimationDuration="100"
+            app:layout_scrollFlags="snap|scroll|exitUntilCollapsed|enterAlwaysCollapsed"
+            app:scrimAnimationDuration="50"
             app:scrimVisibleHeightTrigger="120dp"
             app:titleEnabled="false">
 

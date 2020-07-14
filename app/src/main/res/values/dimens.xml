@@ -6,4 +6,6 @@
     <dimen name="big_text">18sp</dimen>
     <dimen name="toolbar_text">24sp</dimen>
     <dimen name="toolbar_big_text">32sp</dimen>
+    <dimen name="progress_size">48dp</dimen>
+    <dimen name="progress_margin">64dp</dimen>
 </resources>
