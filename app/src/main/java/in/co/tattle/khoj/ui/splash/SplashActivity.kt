@@ -7,13 +7,9 @@ import `in`.co.tattle.khoj.ui.setup.SetupActivity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.animation.LinearInterpolator
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.remoteconfig.ktx.remoteConfig
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity() {
@@ -31,7 +27,6 @@ class SplashActivity : BaseActivity() {
         changeTextAlpha()
 
         setupObserver()
-
     }
 
     private fun setupObserver() {

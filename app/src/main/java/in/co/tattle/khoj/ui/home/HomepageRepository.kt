@@ -1,7 +1,7 @@
 package `in`.co.tattle.khoj.ui.home
 
 import `in`.co.tattle.khoj.data.network.KhojRetrofitBuilder
-import `in`.co.tattle.khoj.model.Homepage
+import `in`.co.tattle.khoj.model.homenews.Homepage
 import android.content.Context
 
 class HomepageRepository private constructor(private val context: Context) {

@@ -2,7 +2,7 @@ package `in`.co.tattle.khoj.ui
 
 import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
-import `in`.co.tattle.khoj.model.IntroObject
+import `in`.co.tattle.khoj.model.homenews.IntroObject
 import `in`.co.tattle.khoj.ui.adapters.IntroAdapter
 import `in`.co.tattle.khoj.ui.home.HomepageActivity
 import android.content.Intent

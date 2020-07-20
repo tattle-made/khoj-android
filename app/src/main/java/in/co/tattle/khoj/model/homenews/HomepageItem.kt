@@ -1,4 +1,7 @@
-package `in`.co.tattle.khoj.model
+package `in`.co.tattle.khoj.model.homenews
+
+import `in`.co.tattle.khoj.model.homenews.ArticleShare
+import `in`.co.tattle.khoj.model.homenews.ArticleTrending
 
 data class HomepageItem(
     val Greeting: String,

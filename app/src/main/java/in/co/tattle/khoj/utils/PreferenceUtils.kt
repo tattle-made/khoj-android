@@ -9,6 +9,9 @@ object PreferenceUtils {
 
     const val IS_LOGGED_IN_USER: String = "isLoggedInUser"
     const val SELECTED_LANGUAGE: String = "selectedLanguage"
+    const val APP_CREATOR_TOKEN: String = "creatorToken"
+    const val USER_TOKEN: String = "userToken"
+    const val FCM_DEVICE_TOKEN: String = "fcmToken"
 
     fun getPrefString(context: Context, prefKey: String): String? {
         val preferences = context.getSharedPreferences(PREF_NAME, MODE_PRIVATE)

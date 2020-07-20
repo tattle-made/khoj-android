@@ -4,20 +4,28 @@ import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.ui.IntroActivity
 import `in`.co.tattle.khoj.utils.Constants
+import `in`.co.tattle.khoj.utils.Status
+import `in`.co.tattle.khoj.utils.ui.LoadingDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_setup.*
 
 class SetupActivity : BaseActivity(), View.OnClickListener {
 
     lateinit var viewModel: SetupViewModel
+    lateinit var loadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setup)
 
+        loadingDialog = LoadingDialog(this)
         viewModel = ViewModelProvider(this).get(SetupViewModel::class.java)
 
         btnHindi.setOnClickListener(this)
@@ -28,13 +36,52 @@ class SetupActivity : BaseActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btnHindi -> {
                 viewModel.setupLanguage(Constants.HINDI)
-                startIntroActivity()
+                registerUser(Constants.HINDI)
             }
             R.id.btnEnglish -> {
                 viewModel.setupLanguage(Constants.ENGLISH)
-                startIntroActivity()
+                registerUser(Constants.ENGLISH)
             }
         }
+    }
+
+    private fun registerUser(language: String) {
+        viewModel.registerUser().observe(this, Observer { result ->
+            when (result.status) {
+                Status.LOADING -> {
+                    loadingDialog.show()
+                    if (TextUtils.equals(language, Constants.ENGLISH)) {
+                        loadingDialog.setMessage(getString(R.string.setting_up_eng))
+                    } else if (TextUtils.equals(language, Constants.HINDI)) {
+                        loadingDialog.setMessage(getString(R.string.setting_up_hin))
+                    }
+                }
+                Status.SUCCESS -> {
+                    result.data?.let { userResponse ->
+                        Toast.makeText(
+                            this@SetupActivity,
+                            "success ${userResponse.user.username}",
+                            LENGTH_SHORT
+                        ).show()
+                    }
+                    loadingDialog.dismiss()
+                    startIntroActivity()
+                }
+                Status.ERROR -> {
+                    loadingDialog.dismiss()
+                    Toast.makeText(
+                        this@SetupActivity,
+                        getString(R.string.error_try_later),
+                        LENGTH_SHORT
+                    ).show()
+                }
+                Status.NO_NETWORK -> {
+                    loadingDialog.dismiss()
+                    Toast.makeText(this@SetupActivity, getString(R.string.offline), LENGTH_SHORT)
+                        .show()
+                }
+            }
+        })
     }
 
     private fun startIntroActivity() {

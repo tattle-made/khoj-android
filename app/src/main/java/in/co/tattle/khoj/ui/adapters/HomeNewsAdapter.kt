@@ -1,7 +1,7 @@
 package `in`.co.tattle.khoj.ui.adapters
 
 import `in`.co.tattle.khoj.R
-import `in`.co.tattle.khoj.model.HomepageItem
+import `in`.co.tattle.khoj.model.homenews.HomepageItem
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -14,28 +14,29 @@ import com.bumptech.glide.Glide
 class HomeNewsAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var homepageItem: HomepageItem = HomepageItem()
+    var homepageItem: HomepageItem =
+        HomepageItem()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
             ViewType.TRENDING.ordinal -> TrendingViewHolder(
                 inflater.inflate(
-                    R.layout.home_adapter_trending,
+                    R.layout.adapter_home_trending,
                     parent,
                     false
                 )
             )
             ViewType.SHARE.ordinal -> ShareViewHolder(
                 inflater.inflate(
-                    R.layout.home_adapter_share,
+                    R.layout.adapter_home_share,
                     parent,
                     false
                 )
             )
             else -> TrendingViewHolder(
                 inflater.inflate(
-                    R.layout.home_adapter_trending,
+                    R.layout.adapter_home_trending,
                     parent,
                     false
                 )

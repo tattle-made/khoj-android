@@ -23,4 +23,8 @@
     <string name="choose_language_hin">कृपया अपनी पसंदीदा भाषा चुनें</string>
     <string name="hindi">हिन्दी</string>
     <string name="english">English</string>
+    <string name="search_timeline">आपका फर्जी समाचार खोज समयरेखा</string>
+    <string name="setting_up_eng">Setting up the application based on your preference, please wait…</string>
+    <string name="setting_up_hin">हम आपकी पसंद के आधार पर एप्लिकेशन सेट कर रहे हैं, कृपया प्रतीक्षा करें…</string>
+    <string name="error_try_later">कुछ समस्या है, कृपया बाद में प्रयास करें</string>
 </resources>

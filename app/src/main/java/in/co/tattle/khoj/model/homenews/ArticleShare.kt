@@ -1,4 +1,4 @@
-package `in`.co.tattle.khoj.model
+package `in`.co.tattle.khoj.model.homenews
 
 data class ArticleShare(
     val byline: String,
