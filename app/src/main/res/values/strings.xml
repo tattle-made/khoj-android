@@ -27,4 +27,11 @@
     <string name="setting_up_eng">Setting up the application based on your preference, please wait…</string>
     <string name="setting_up_hin">हम आपकी पसंद के आधार पर एप्लिकेशन सेट कर रहे हैं, कृपया प्रतीक्षा करें…</string>
     <string name="error_try_later">Something went wrong, please try later</string>
+    <string name="submit">SUBMIT</string>
+    <string name="select_image_or_video">Select image or video</string>
+    <string name="choose_screenshot">Choose screenshot</string>
+    <string name="or">OR</string>
+    <string name="supporting_message">Supporting message</string>
+    <string name="use_recently_copied_text">Use recently copied text</string>
+    <string name="no_media_added">No media added to the message yet!</string>
 </resources>

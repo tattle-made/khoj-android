@@ -27,4 +27,7 @@
     <string name="setting_up_eng">Setting up the application based on your preference, please wait…</string>
     <string name="setting_up_hin">हम आपकी पसंद के आधार पर एप्लिकेशन सेट कर रहे हैं, कृपया प्रतीक्षा करें…</string>
     <string name="error_try_later">कुछ समस्या है, कृपया बाद में प्रयास करें</string>
+    <string name="submit">जमा करिए</string>
+    <string name="select_image_or_video">चित्र या वीडियो चुनें</string>
+    <string name="choose_screenshot">स्क्रीनशॉट चुनें</string>
 </resources>

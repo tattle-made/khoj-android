@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.home_news_fragment.*
+import kotlinx.android.synthetic.main.fragment_home_news.*
 
 class HomeNewsFragment : Fragment(), View.OnClickListener {
 
@@ -28,7 +28,7 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.home_news_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_home_news, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

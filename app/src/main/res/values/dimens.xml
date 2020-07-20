@@ -8,4 +8,5 @@
     <dimen name="toolbar_big_text">32sp</dimen>
     <dimen name="progress_size">48dp</dimen>
     <dimen name="progress_margin">64dp</dimen>
+    <dimen name="small_text">12sp</dimen>
 </resources>

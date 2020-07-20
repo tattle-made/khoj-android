@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.message.NewMessageActivity"></activity>
+        <activity
+            android:name=".ui.message.NewMessageActivity"
+            android:theme="@style/Homepage" />
         <activity android:name=".ui.setup.SetupActivity" />
         <activity
             android:name=".ui.IntroActivity"
