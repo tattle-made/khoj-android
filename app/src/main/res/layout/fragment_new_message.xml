@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.message.NewMessageFragment">
+    tools:context=".ui.message.create.NewMessageFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/layoutNoMedia"
+            android:id="@+id/tvNoMedia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/page_margin"
@@ -28,6 +28,12 @@
             app:layout_constraintBottom_toTopOf="@+id/cardClipboard"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--<LinearLayout
+            android:id="@+id/layoutMedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cardClipboard"
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardClipboard"
@@ -51,11 +57,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/top_margin"
                     android:hint="@string/supporting_message"
+                    android:paddingTop="0dp"
+                    app:boxBackgroundColor="@color/secondaryTextColor"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etMessage"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="@dimen/top_margin"
+                        android:paddingBottom="6dp"
+                        android:textColor="@color/primaryTextColor" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -75,6 +88,7 @@
                     android:id="@+id/btnCopy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0"
                     android:text="@string/use_recently_copied_text"
                     android:textSize="@dimen/small_text"
                     app:backgroundTint="@color/primaryColor"
@@ -94,6 +108,7 @@
             android:id="@+id/btnMedia"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:letterSpacing="0"
             android:paddingTop="@dimen/top_margin"
             android:paddingBottom="@dimen/top_margin"
             android:text="@string/select_image_or_video"
@@ -107,6 +122,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/page_margin"
+            android:letterSpacing="0"
             android:paddingTop="@dimen/top_margin"
             android:paddingBottom="@dimen/top_margin"
             android:text="@string/choose_screenshot"
@@ -126,6 +142,7 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
+        android:letterSpacing="0"
         android:text="@string/submit"
         app:backgroundTint="@color/secondaryColor"
         app:cornerRadius="0dp"

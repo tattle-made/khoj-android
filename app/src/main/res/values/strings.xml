@@ -34,4 +34,8 @@
     <string name="supporting_message">Supporting message</string>
     <string name="use_recently_copied_text">Use recently copied text</string>
     <string name="no_media_added">No media added to the message yet!</string>
+    <string name="spread_the_word">Spread the word</string>
+    <string name="happy_with_result">Are you happy with the result?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>

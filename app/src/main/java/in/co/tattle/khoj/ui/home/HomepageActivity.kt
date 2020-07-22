@@ -5,7 +5,7 @@ import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.ui.home.historyfragment.HistoryFragment
 import `in`.co.tattle.khoj.ui.home.homefragment.HomeNewsFragment
 import `in`.co.tattle.khoj.ui.home.morefragment.MoreFragment
-import `in`.co.tattle.khoj.ui.message.NewMessageActivity
+import `in`.co.tattle.khoj.ui.message.create.NewMessageActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem

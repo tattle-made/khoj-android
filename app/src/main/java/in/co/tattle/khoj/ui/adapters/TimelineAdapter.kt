@@ -10,8 +10,10 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 
-class TimelineAdapter : RecyclerView.Adapter<TimelineAdapter.TimelineViewHolder>() {
+class TimelineAdapter(val onTimelineClick: () -> Unit) :
+    RecyclerView.Adapter<TimelineAdapter.TimelineViewHolder>() {
 
     var timeline: ArrayList<UserTimeline> = arrayListOf()
 
@@ -48,6 +50,9 @@ class TimelineAdapter : RecyclerView.Adapter<TimelineAdapter.TimelineViewHolder>
         }
         holder.timelineText.text = timeline[position].message
 
+        holder.cardMessage.setOnClickListener {
+            onTimelineClick()
+        }
     }
 
     fun updateData(timeline: ArrayList<UserTimeline>) {
@@ -59,5 +64,6 @@ class TimelineAdapter : RecyclerView.Adapter<TimelineAdapter.TimelineViewHolder>
         val date: TextView = itemView.findViewById(R.id.tvDate)
         val timelineText: TextView = itemView.findViewById(R.id.tvTimelineText)
         val circleView: View = itemView.findViewById(R.id.view_circle)
+        val cardMessage: MaterialCardView = itemView.findViewById(R.id.cardMessage)
     }
 }

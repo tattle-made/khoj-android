@@ -2,6 +2,8 @@ package `in`.co.tattle.khoj.ui.home.historyfragment
 
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.ui.adapters.TimelineAdapter
+import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,8 +46,12 @@ class HistoryFragment : Fragment() {
 
     private fun setupRecycler() {
         recyclerTimeline.layoutManager = LinearLayoutManager(context)
-        timelineAdapter = TimelineAdapter()
+        timelineAdapter = TimelineAdapter(onTimelineClick)
         recyclerTimeline.adapter = timelineAdapter
+    }
+
+    val onTimelineClick: () -> Unit = {
+        startActivity(Intent(context, MessageResponseActivity::class.java))
     }
 
 }

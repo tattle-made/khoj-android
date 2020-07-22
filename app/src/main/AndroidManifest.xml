@@ -14,7 +14,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.message.NewMessageActivity"
+            android:name=".ui.message.response.MessageResponseActivity"
+            android:theme="@style/Homepage" />
+        <activity
+            android:name=".ui.message.create.NewMessageActivity"
             android:theme="@style/Homepage" />
         <activity android:name=".ui.setup.SetupActivity" />
         <activity

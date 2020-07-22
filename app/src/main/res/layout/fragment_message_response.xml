@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/message_response"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="in.co.tattle.khoj.ui.message.response.MessageResponseFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/page_margin">
+
+        <ImageView
+            android:id="@+id/ivMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/supporting_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_margin"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/big_text"
+            app:layout_constraintTop_toBottomOf="@id/ivMessage" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="@dimen/page_margin"
+            android:layout_marginEnd="2dp"
+            app:cardBackgroundColor="@color/primaryColor"
+            app:cardElevation="6dp"
+            app:layout_constraintTop_toBottomOf="@id/tvMessage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/top_margin">
+
+                <ImageView
+                    android:id="@+id/ivResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_circle"
+                    android:contentDescription="@string/happy_with_result"
+                    android:padding="@dimen/top_margin"
+                    android:src="@drawable/ic_done"
+                    app:layout_constraintBottom_toBottomOf="@id/tvResult"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/top_margin"
+                    android:drawablePadding="@dimen/top_margin"
+                    android:text="The message you posted has been verified as fake news!"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/big_text"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivResult"
+                    app:layout_constraintStart_toEndOf="@id/ivResult"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnResponseShare"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:letterSpacing="0"
+                    android:text="@string/spread_the_word"
+                    android:textColor="@color/secondaryTextColor"
+                    app:icon="@drawable/ic_share_white"
+                    app:iconPadding="@dimen/top_margin"
+                    app:iconTint="@color/secondaryTextColor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivResult" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="@dimen/page_margin"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="@dimen/top_margin"
+            app:cardElevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardResult">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/top_margin">
+
+                <TextView
+                    android:id="@+id/tvResponse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/happy_with_result"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="@dimen/big_text"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rgResponse"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/rgResponse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/top_margin"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvResponse"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/rbYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_happy"
+                        android:buttonTint="@color/primaryColor"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="0dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="@dimen/big_text" />
+
+                    <RadioButton
+                        android:id="@+id/rbNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/page_margin"
+                        android:button="@drawable/radio_sad"
+                        android:buttonTint="@color/primaryColor"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="0dp"
+                        android:text="@string/no"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="@dimen/big_text" />
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

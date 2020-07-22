@@ -54,17 +54,18 @@
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="@dimen/toolbar_text" />
 
-                <android.widget.Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnNewMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded_corner_primary_color"
+                    android:letterSpacing="0"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="@string/try_it"
                     android:textColor="@color/secondaryTextColor"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    app:backgroundTint="@color/primaryColor" />
             </LinearLayout>
 
             <androidx.appcompat.widget.Toolbar
