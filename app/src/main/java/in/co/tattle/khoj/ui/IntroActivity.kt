@@ -61,7 +61,9 @@ class IntroActivity : BaseActivity() {
     }
 
     private fun startNextActivity() {
-        startActivity(Intent(this@IntroActivity, HomepageActivity::class.java))
+        val intent = Intent(this@IntroActivity, HomepageActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 
     private fun setupNavigationButtons(position: Int) {
