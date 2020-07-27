@@ -7,7 +7,6 @@ import `in`.co.tattle.khoj.utils.PreferenceUtils
 import `in`.co.tattle.khoj.utils.Result
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.liveData
 import com.google.firebase.ktx.Firebase
@@ -43,10 +42,7 @@ class SetupViewModel(application: Application) : AndroidViewModel(application) {
                         remoteConfig.getString("android_app_user_creator")
                     )
                 } else {
-                    Toast.makeText(
-                        context, "Fetch failed",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    //fetch failed
                 }
             }
     }

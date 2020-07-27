@@ -18,24 +18,23 @@ class HomeNewsAdapter(private val context: Context) :
         HomepageItem()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
             ViewType.TRENDING.ordinal -> TrendingViewHolder(
-                inflater.inflate(
+                LayoutInflater.from(parent.context).inflate(
                     R.layout.adapter_home_trending,
                     parent,
                     false
                 )
             )
             ViewType.SHARE.ordinal -> ShareViewHolder(
-                inflater.inflate(
+                LayoutInflater.from(parent.context).inflate(
                     R.layout.adapter_home_share,
                     parent,
                     false
                 )
             )
             else -> TrendingViewHolder(
-                inflater.inflate(
+                LayoutInflater.from(parent.context).inflate(
                     R.layout.adapter_home_trending,
                     parent,
                     false

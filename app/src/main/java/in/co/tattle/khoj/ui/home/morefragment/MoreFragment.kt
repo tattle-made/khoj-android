@@ -29,8 +29,8 @@ class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
         return inflater.inflate(R.layout.fragment_more, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MoreViewModel::class.java)
 
         setupLanguage()

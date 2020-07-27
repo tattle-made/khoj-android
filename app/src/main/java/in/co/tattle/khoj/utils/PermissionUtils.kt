@@ -21,21 +21,21 @@ object PermissionUtils {
 
     fun requestPermissions(
         activity: Activity,
-        permission: Array<String?>?,
+        permission: Array<String>,
         requestCode: Int
     ) {
         if (useRunTimePermissions()) {
-            activity.requestPermissions(permission!!, requestCode)
+            activity.requestPermissions(permission, requestCode)
         }
     }
 
     fun requestPermissions(
         fragment: Fragment,
-        permission: Array<String?>?,
+        permission: Array<String>,
         requestCode: Int
     ) {
         if (useRunTimePermissions()) {
-            fragment.requestPermissions(permission!!, requestCode)
+            fragment.requestPermissions(permission, requestCode)
         }
     }
 

@@ -38,4 +38,8 @@
     <string name="happy_with_result">Are you happy with the result?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="please_select_a_screenshot">Please select a screenshot</string>
+    <string name="sad">:(</string>
+    <string name="no_screenshots">No screenshots found</string>
+    <string name="screenshot_error">We ran into some error, please try later</string>
 </resources>

@@ -57,13 +57,6 @@ class SetupActivity : BaseActivity(), View.OnClickListener {
                     }
                 }
                 Status.SUCCESS -> {
-                    result.data?.let { userResponse ->
-                        Toast.makeText(
-                            this@SetupActivity,
-                            "success ${userResponse.user.username}",
-                            LENGTH_SHORT
-                        ).show()
-                    }
                     loadingDialog.dismiss()
                     startIntroActivity()
                 }

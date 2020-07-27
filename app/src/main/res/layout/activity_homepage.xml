@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             app:contentScrim="@color/secondaryColor"
             app:layout_scrollFlags="snap|scroll|exitUntilCollapsed|enterAlwaysCollapsed"
-            app:scrimAnimationDuration="50"
+            app:scrimAnimationDuration="200"
             app:scrimVisibleHeightTrigger="120dp"
             app:titleEnabled="false">
 
@@ -28,7 +28,7 @@
                 android:id="@+id/llToolbarWelcome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="?attr/actionBarSize"
+                android:layout_marginTop="@dimen/toolbar_margin"
                 android:fitsSystemWindows="true"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/page_margin"
@@ -81,7 +81,7 @@
     <FrameLayout
         android:id="@+id/fragment_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

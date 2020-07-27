@@ -26,8 +26,8 @@ class MessageResponseFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_message_response, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MessageResponseViewModel::class.java)
         Glide.with(this)
             .load("https://cdn.pixabay.com/photo/2014/02/09/05/19/woman-262498_1280.jpg")

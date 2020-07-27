@@ -26,4 +26,5 @@ class HomeNewsViewModel(application: Application) : AndroidViewModel(application
             emit(Result.error(data = null, message = e.message ?: "Error detected"))
         }
     }
+
 }

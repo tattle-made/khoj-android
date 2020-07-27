@@ -31,8 +31,8 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_home_news, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeNewsViewModel::class.java)
 
         imgRefresh.setOnClickListener(this)
@@ -43,7 +43,7 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
 
     private fun setupRecyclerView() {
         recyclerHome.layoutManager = LinearLayoutManager(context)
-        homeNewsAdapter = HomeNewsAdapter(context!!)
+        homeNewsAdapter = HomeNewsAdapter(requireContext())
         recyclerHome.adapter = homeNewsAdapter
     }
 

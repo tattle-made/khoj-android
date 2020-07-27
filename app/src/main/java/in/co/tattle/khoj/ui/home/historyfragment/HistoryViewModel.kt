@@ -1,15 +1,14 @@
 package `in`.co.tattle.khoj.ui.home.historyfragment
 
 import `in`.co.tattle.khoj.model.timeline.UserTimeline
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class HistoryViewModel : ViewModel() {
 
-    val userTimeline: LiveData<ArrayList<UserTimeline>>
-        get() = mutableUserTimeline
-    private val mutableUserTimeline = MutableLiveData<ArrayList<UserTimeline>>()
+    val userTimeline: MutableLiveData<ArrayList<UserTimeline>> by lazy {
+        MutableLiveData<ArrayList<UserTimeline>>()
+    }
 
     init {
         val temp: ArrayList<UserTimeline> = arrayListOf()
@@ -55,6 +54,6 @@ class HistoryViewModel : ViewModel() {
         )
         temp.add(tempUserTimeline)
 
-        mutableUserTimeline.postValue(temp)
+        userTimeline.value = temp
     }
 }

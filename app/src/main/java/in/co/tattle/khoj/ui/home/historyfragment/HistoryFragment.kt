@@ -1,7 +1,7 @@
 package `in`.co.tattle.khoj.ui.home.historyfragment
 
 import `in`.co.tattle.khoj.R
-import `in`.co.tattle.khoj.ui.adapters.TimelineAdapter
+import `in`.co.tattle.khoj.ui.adapters.HistoryAdapter
 import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
 import android.content.Intent
 import android.os.Bundle
@@ -20,7 +20,7 @@ class HistoryFragment : Fragment() {
         fun newInstance() = HistoryFragment()
     }
 
-    private lateinit var timelineAdapter: TimelineAdapter
+    private lateinit var timelineAdapter: HistoryAdapter
     private lateinit var viewModel: HistoryViewModel
 
     override fun onCreateView(
@@ -30,8 +30,8 @@ class HistoryFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
 
         setupRecycler()
@@ -46,11 +46,11 @@ class HistoryFragment : Fragment() {
 
     private fun setupRecycler() {
         recyclerTimeline.layoutManager = LinearLayoutManager(context)
-        timelineAdapter = TimelineAdapter(onTimelineClick)
+        timelineAdapter = HistoryAdapter(onTimelineClick)
         recyclerTimeline.adapter = timelineAdapter
     }
 
-    val onTimelineClick: () -> Unit = {
+    private val onTimelineClick: () -> Unit = {
         startActivity(Intent(context, MessageResponseActivity::class.java))
     }
 
