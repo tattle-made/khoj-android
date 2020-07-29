@@ -17,7 +17,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.screenshot_bottom_sheet.*
 
-class ScreenshotBottomSheet : BottomSheetDialogFragment() {
+class ScreenshotBottomSheet(val onScreenshotSelect: (uri: Uri) -> Unit) :
+    BottomSheetDialogFragment() {
     private lateinit var viewModel: ScreenshotViewModel
     private lateinit var mediaAdapter: MessageMediaAdapter
 
@@ -73,5 +74,7 @@ class ScreenshotBottomSheet : BottomSheetDialogFragment() {
     }
 
     private val onAdapterClick: (uri: Uri) -> Unit = { uri ->
+        onScreenshotSelect(uri)
+        this.dismiss()
     }
 }

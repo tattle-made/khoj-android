@@ -119,7 +119,9 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
                 startForResult.launch(null)
             }
             R.id.btnSubmit -> {
-                startActivity(Intent(context, MessageResponseActivity::class.java))
+                val intent = Intent(context, MessageResponseActivity::class.java)
+                intent.putExtra(Constants.MESSAGE_ID, "1")
+                startActivity(intent)
             }
         }
     }
@@ -154,7 +156,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
 
     private fun showScreenshotSheet() {
         val screenshotBottomSheet =
-            ScreenshotBottomSheet()
+            ScreenshotBottomSheet(onScreenshotSelect)
         screenshotBottomSheet.show(activity?.supportFragmentManager!!, null)
     }
 
@@ -180,6 +182,10 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
 
     private val onAdapterClick: (uri: Uri) -> Unit = { uri ->
         viewModel.removeMedia(uri)
+    }
+
+    private val onScreenshotSelect: (uri: Uri) -> Unit = { uri ->
+        viewModel.addMedia(uri)
     }
 
 }

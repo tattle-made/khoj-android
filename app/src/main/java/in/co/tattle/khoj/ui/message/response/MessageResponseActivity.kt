@@ -1,6 +1,7 @@
 package `in`.co.tattle.khoj.ui.message.response
 
 import `in`.co.tattle.khoj.R
+import `in`.co.tattle.khoj.utils.Constants
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,11 @@ class MessageResponseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_message_response)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_message_response, MessageResponseFragment.newInstance())
+                .replace(
+                    R.id.fragment_message_response, MessageResponseFragment.newInstance(
+                        intent.getStringExtra(Constants.MESSAGE_ID)!!
+                    )
+                )
                 .commitNow()
         }
         setSupportActionBar(toolbarMessage)

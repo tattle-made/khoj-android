@@ -3,6 +3,7 @@ package `in`.co.tattle.khoj.ui.home.historyfragment
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.ui.adapters.HistoryAdapter
 import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
+import `in`.co.tattle.khoj.utils.Constants
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -51,7 +52,9 @@ class HistoryFragment : Fragment() {
     }
 
     private val onTimelineClick: () -> Unit = {
-        startActivity(Intent(context, MessageResponseActivity::class.java))
+        val intent = Intent(context, MessageResponseActivity::class.java)
+        intent.putExtra(Constants.MESSAGE_ID, "1")
+        startActivity(intent)
     }
 
 }
