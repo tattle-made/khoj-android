@@ -53,7 +53,7 @@ class HistoryFragment : Fragment() {
 
     private val onTimelineClick: () -> Unit = {
         val intent = Intent(context, MessageResponseActivity::class.java)
-        intent.putExtra(Constants.MESSAGE_ID, "1")
+        intent.putExtra(Constants.MESSAGE_ID, "5f2014b62a50cc43b3e60ae2")
         startActivity(intent)
     }
 

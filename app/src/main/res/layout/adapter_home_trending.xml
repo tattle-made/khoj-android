@@ -6,22 +6,16 @@
     android:background="@color/secondaryTextColor"
     android:paddingBottom="@dimen/page_margin">
 
-    <FrameLayout
-        android:id="@+id/layoutImage"
+    <ImageView
+        android:id="@+id/imgTrending"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/home"
         app:layout_constraintEnd_toStartOf="@+id/tvTrendingHead"
         app:layout_constraintHorizontal_weight="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imgTrending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/home" />
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvTrendingHead"
@@ -31,9 +25,10 @@
         android:contentDescription="@string/home"
         android:textColor="@color/primaryTextColor"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="0.75"
-        app:layout_constraintStart_toEndOf="@+id/layoutImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imgTrending"
+        app:layout_constraintTop_toTopOf="@+id/imgTrending" />
 
     <TextView
         android:id="@+id/tvTrendingDescription"

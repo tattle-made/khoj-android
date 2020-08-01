@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 
 class HomeNewsAdapter(private val context: Context) :
@@ -58,10 +59,15 @@ class HomeNewsAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val circularProgressDrawable = CircularProgressDrawable(context)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
         when (getItemViewType(position)) {
             ViewType.TRENDING.ordinal -> {
                 Glide.with(context)
                     .load(homepageItem.article_trending[position].thumbnail)
+                    .placeholder(circularProgressDrawable)
                     .into((holder as TrendingViewHolder).imgTrending)
                 holder.tvTrendingHead.text =
                     homepageItem.article_trending[position].heading
@@ -71,6 +77,7 @@ class HomeNewsAdapter(private val context: Context) :
             ViewType.SHARE.ordinal -> {
                 Glide.with(context)
                     .load(homepageItem.article_share.image_thumbnail)
+                    .placeholder(circularProgressDrawable)
                     .into((holder as ShareViewHolder).imgShare)
                 holder.tvShareHead.text =
                     homepageItem.article_share.heading

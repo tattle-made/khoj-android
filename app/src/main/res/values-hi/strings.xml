@@ -38,4 +38,11 @@
     <string name="happy_with_result">क्या आप हमारी खोज से खुश हैं?</string>
     <string name="no">नहीं</string>
     <string name="yes">हाँ</string>
+    <string name="please_select_a_screenshot">कृपया स्क्रीनशॉट चुनें</string>
+    <string name="sad">:(</string>
+    <string name="no_screenshots">कोई स्क्रीनशॉट नहीं मिला</string>
+    <string name="screenshot_error">हम एक त्रुटि का सामना कर रहे हैं, कृपया बाद में प्रयास करें</string>
+    <string name="responses_for_query">आपकी क्वेरी के लिए प्रतिक्रियाएँ</string>
+    <string name="read_more_here"><u>और पढ़ें यहाँ</u></string>
+    <string name="media">मीडिया</string>
 </resources>

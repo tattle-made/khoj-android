@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class KhojRetrofitBuilder private constructor(private val context: Context) {
 
-    val BASE_URL = "http://3.7.78.13:3000/"
+    val BASE_URL = "http://a03161e0f542045168aba70c7b733b1c-555991731.ap-south-1.elb.amazonaws.com:1337"
 
     val khojApiService: KhojApiService = getRetrofit().create(KhojApiService::class.java)
 

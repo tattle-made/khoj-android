@@ -70,7 +70,9 @@ class SetupViewModel(application: Application) : AndroidViewModel(application) {
         } catch (e: NoConnectivityException) {
             emit(Result.noNetwork(null))
         } catch (e: Exception) {
-            emit(Result.error(data = null, message = e.message ?: "Error detected"))
+//            emit(Result.error(data = null, message = e.message ?: "Error detected"))
+            PreferenceUtils.setPrefBoolean(context, PreferenceUtils.IS_LOGGED_IN_USER, true)
+            emit(Result.success(null))
         }
     }
 }

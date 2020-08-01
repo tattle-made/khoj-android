@@ -1,7 +1,7 @@
 package `in`.co.tattle.khoj.data.network
 
 import `in`.co.tattle.khoj.model.homenews.Homepage
-import `in`.co.tattle.khoj.model.messageresponse.MessageResponse
+import `in`.co.tattle.khoj.model.queryresponse.QueryResponse
 import `in`.co.tattle.khoj.model.user.UserRequest
 import `in`.co.tattle.khoj.model.user.UserResponse
 import retrofit2.http.*
@@ -18,7 +18,7 @@ interface KhojApiService {
         @Body userRequest: UserRequest
     ): UserResponse
 
-    @GET("/messages/{messageId}")
-    suspend fun getMessageResponse(@Path("messageId") messageId: String): MessageResponse
+    @GET("/queries/{messageId}")
+    suspend fun getQueryResponse(@Path("messageId") messageId: String): QueryResponse
 
 }

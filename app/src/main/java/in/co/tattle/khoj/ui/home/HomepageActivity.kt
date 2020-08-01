@@ -74,21 +74,21 @@ class HomepageActivity : BaseActivity(), View.OnClickListener,
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_home -> {
+                loadFragment(HomeNewsFragment.newInstance())
                 showToolbarWelcome()
                 toolbarHomepage.title = " "
-                loadFragment(HomeNewsFragment.newInstance())
                 return true
             }
             R.id.menu_timeline -> {
+                loadFragment(HistoryFragment.newInstance())
                 hideToolbarWelcome()
                 toolbarHomepage.title = getString(R.string.app_name)
-                loadFragment(HistoryFragment.newInstance())
                 return true
             }
             R.id.menu_more -> {
+                loadFragment(MoreFragment.newInstance())
                 hideToolbarWelcome()
                 toolbarHomepage.title = getString(R.string.app_name)
-                loadFragment(MoreFragment.newInstance())
                 return true
             }
         }

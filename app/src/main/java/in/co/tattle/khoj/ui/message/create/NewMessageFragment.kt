@@ -25,7 +25,8 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
 import kotlinx.android.synthetic.main.fragment_new_message.*
 
 
@@ -62,7 +63,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupMediaRecycler() {
-        recyclerMedia.layoutManager = GridLayoutManager(context, 2)
+        recyclerMedia.layoutManager = StaggeredGridLayoutManager(2, VERTICAL)
         mediaAdapter = MessageMediaAdapter(onAdapterClick, Constants.SELECTED_MEDIA)
         recyclerMedia.adapter = mediaAdapter
     }
@@ -120,7 +121,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
             }
             R.id.btnSubmit -> {
                 val intent = Intent(context, MessageResponseActivity::class.java)
-                intent.putExtra(Constants.MESSAGE_ID, "1")
+                intent.putExtra(Constants.MESSAGE_ID, "5f2014b62a50cc43b3e60ae2")
                 startActivity(intent)
             }
         }
@@ -162,7 +163,9 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
 
     private val startForResult =
         registerForActivityResult(PickGalleryImage()) { selectedUri: Uri? ->
-            viewModel.addMedia(selectedUri!!)
+            if (selectedUri != null) {
+                viewModel.addMedia(selectedUri)
+            }
         }
 
     class PickGalleryImage : ActivityResultContract<Void?, Uri?>() {

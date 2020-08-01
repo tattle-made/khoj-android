@@ -42,4 +42,7 @@
     <string name="sad">:(</string>
     <string name="no_screenshots">No screenshots found</string>
     <string name="screenshot_error">We ran into some error, please try later</string>
+    <string name="responses_for_query">Responses for your query</string>
+    <string name="read_more_here"><u>Read more here</u></string>
+    <string name="media">Media</string>
 </resources>

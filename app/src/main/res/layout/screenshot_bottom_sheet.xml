@@ -33,12 +33,14 @@
         android:id="@+id/layoutError"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/tvErrorIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/page_margin"
             android:text="@string/sad"
             android:textColor="@color/primaryTextColor"
