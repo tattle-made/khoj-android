@@ -1,4 +1,4 @@
-package `in`.co.tattle.khoj.model.homenews
+package `in`.co.tattle.khoj.model
 
 data class IntroObject(
     val description: String,

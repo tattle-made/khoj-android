@@ -1,5 +1,10 @@
 package `in`.co.tattle.khoj.ui.message.create
 
+import `in`.co.tattle.khoj.data.network.NoConnectivityException
+import `in`.co.tattle.khoj.model.Question
+import `in`.co.tattle.khoj.utils.PreferenceUtils
+import `in`.co.tattle.khoj.utils.Result
+import `in`.co.tattle.khoj.utils.Utils
 import android.app.Application
 import android.content.ClipDescription
 import android.content.ClipboardManager
@@ -8,6 +13,9 @@ import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
+import kotlinx.coroutines.Dispatchers
+import okhttp3.MultipartBody
 
 class NewMessageViewModel(application: Application) : AndroidViewModel(application) {
     private val context = getApplication<Application>().applicationContext
@@ -44,7 +52,33 @@ class NewMessageViewModel(application: Application) : AndroidViewModel(applicati
         media.notifyObserver()
     }
 
-    fun <T> MutableLiveData<T>.notifyObserver() {
+    private fun <T> MutableLiveData<T>.notifyObserver() {
         this.value = this.value
+    }
+
+    fun submitQuery(question: Question) = liveData(Dispatchers.IO) {
+        emit(Result.loading(null))
+        try {
+            val userToken: String? =
+                PreferenceUtils.getPrefString(context, PreferenceUtils.USER_TOKEN)
+
+            val mediaFiles: ArrayList<MultipartBody.Part> = arrayListOf()
+            for (i in 0 until media.value!!.size) {
+                mediaFiles.add(
+                    Utils.prepareFilePart(
+                        "files.media",
+                        media.value!![i], context
+                    )
+                )
+            }
+            val data = NewMessageRepository.getInstance(context).submitQuery(
+                "Bearer $userToken", question, mediaFiles
+            )
+            emit(Result.success(data))
+        } catch (e: NoConnectivityException) {
+            emit(Result.noNetwork(null))
+        } catch (e: Exception) {
+            emit(Result.error(data = null, message = e.message ?: "Error detected"))
+        }
     }
 }

@@ -1,11 +1,13 @@
 package `in`.co.tattle.khoj.ui.message.create
 
 import `in`.co.tattle.khoj.R
+import `in`.co.tattle.khoj.model.Question
 import `in`.co.tattle.khoj.ui.adapters.MessageMediaAdapter
 import `in`.co.tattle.khoj.ui.message.create.screenshot.ScreenshotBottomSheet
-import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
 import `in`.co.tattle.khoj.utils.Constants
 import `in`.co.tattle.khoj.utils.PermissionUtils
+import `in`.co.tattle.khoj.utils.Status
+import `in`.co.tattle.khoj.utils.ui.LoadingDialog
 import android.Manifest.permission
 import android.app.Activity
 import android.content.Context
@@ -21,6 +23,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -38,6 +41,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
     }
 
     private val READ_STORAGE_PERMISSION: Int = 1000
+    private lateinit var loadingDialog: LoadingDialog
     private lateinit var viewModel: NewMessageViewModel
     private lateinit var mediaAdapter: MessageMediaAdapter
 
@@ -50,6 +54,8 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loadingDialog = LoadingDialog(requireContext())
         viewModel = ViewModelProvider(this).get(NewMessageViewModel::class.java)
         btnCopy.setOnClickListener(this)
         btnScreenshot.setOnClickListener(this)
@@ -120,12 +126,43 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
                 startForResult.launch(null)
             }
             R.id.btnSubmit -> {
-                val intent = Intent(context, MessageResponseActivity::class.java)
+                /*val intent = Intent(context, MessageResponseActivity::class.java)
                 intent.putExtra(Constants.MESSAGE_ID, "5f2014b62a50cc43b3e60ae2")
-                startActivity(intent)
+                startActivity(intent)*/
+                submitQuery()
             }
         }
     }
+
+    private fun submitQuery() {
+        viewModel.submitQuery(Question(etMessage.text.toString()))
+            .observe(this, Observer { result ->
+                when (result.status) {
+                    Status.LOADING -> {
+                        loadingDialog.show()
+                        loadingDialog.setMessage(getString(R.string.submitting_query))
+                    }
+                    Status.SUCCESS -> {
+                        loadingDialog.dismiss()
+                        Toast.makeText(requireContext(), "SUCCESSS", LENGTH_SHORT).show()
+//                        startIntroActivity()
+                    }
+                    Status.ERROR -> {
+                        loadingDialog.dismiss()
+                        Toast.makeText(requireContext(), "ERROR", LENGTH_SHORT).show()
+
+                    }
+                    Status.NO_NETWORK -> {
+                        loadingDialog.dismiss()
+                        Toast.makeText(
+                            requireContext(), getString(R.string.offline),
+                            LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            })
+    }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -150,7 +187,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
             Toast.makeText(
                 requireContext(),
                 "No permission to fetch screenshots",
-                Toast.LENGTH_SHORT
+                LENGTH_SHORT
             ).show()
         }
     }

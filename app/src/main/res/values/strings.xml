@@ -45,4 +45,5 @@
     <string name="responses_for_query">Responses for your query</string>
     <string name="read_more_here"><u>Read more here</u></string>
     <string name="media">Media</string>
+    <string name="submitting_query">Submitting your query, please wait...</string>
 </resources>

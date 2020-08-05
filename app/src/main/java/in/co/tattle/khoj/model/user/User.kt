@@ -1,15 +1,15 @@
 package `in`.co.tattle.khoj.model.user
 
-import `in`.co.tattle.khoj.model.user.Role
-
 data class User(
-    val blocked: Any,
+    val __v: Int,
+    val _id: String,
+    val blocked: Boolean,
     val confirmed: Boolean,
-    val created_at: String,
+    val createdAt: String,
     val email: String,
-    val id: Int,
+    val id: String,
     val provider: String,
     val role: Role,
-    val updated_at: String,
+    val updatedAt: String,
     val username: String
 )

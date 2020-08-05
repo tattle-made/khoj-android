@@ -1,9 +1,14 @@
 package `in`.co.tattle.khoj.model.homenews
 
 data class ArticleTrending(
+    val Headline: String,
+    val __v: Int,
+    val _id: String,
     val byline: String,
-    val heading: String,
-    val id: Int,
-    val thumbnail: String,
-    val url: String
+    val createdAt: String,
+    val id: String,
+    val publication_date: String,
+    val source: String,
+    val thumbnail: Thumbnail,
+    val updatedAt: String
 )

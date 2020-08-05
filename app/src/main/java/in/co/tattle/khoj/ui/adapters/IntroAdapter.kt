@@ -1,7 +1,7 @@
 package `in`.co.tattle.khoj.ui.adapters
 
 import `in`.co.tattle.khoj.R
-import `in`.co.tattle.khoj.model.homenews.IntroObject
+import `in`.co.tattle.khoj.model.IntroObject
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

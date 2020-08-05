@@ -1,12 +1,12 @@
 package `in`.co.tattle.khoj.ui.home
 
 import `in`.co.tattle.khoj.data.network.KhojRetrofitBuilder
-import `in`.co.tattle.khoj.model.homenews.Homepage
+import `in`.co.tattle.khoj.model.homenews.HomepageResponse
 import android.content.Context
 
 class HomepageRepository private constructor(private val context: Context) {
 
-    suspend fun getHomepageData(): Homepage {
+    suspend fun getHomepageData(): HomepageResponse {
         return KhojRetrofitBuilder.getInstance(context).khojApiService.getHomepageData()
     }
 

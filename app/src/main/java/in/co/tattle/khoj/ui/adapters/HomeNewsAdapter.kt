@@ -1,28 +1,32 @@
 package `in`.co.tattle.khoj.ui.adapters
 
 import `in`.co.tattle.khoj.R
-import `in`.co.tattle.khoj.model.homenews.HomepageItem
+import `in`.co.tattle.khoj.model.homenews.ArticleShare
+import `in`.co.tattle.khoj.model.homenews.ArticleTrending
+import `in`.co.tattle.khoj.utils.Utils
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.google.android.material.card.MaterialCardView
 
 class HomeNewsAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var homepageItem: HomepageItem =
-        HomepageItem()
+    private var articleTrending: ArrayList<ArticleTrending> = arrayListOf()
+    private var articleShare: ArrayList<ArticleShare> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             ViewType.TRENDING.ordinal -> TrendingViewHolder(
                 LayoutInflater.from(parent.context).inflate(
-                    R.layout.adapter_home_trending,
+                    R.layout.adapter_response_url,
                     parent,
                     false
                 )
@@ -36,7 +40,7 @@ class HomeNewsAdapter(private val context: Context) :
             )
             else -> TrendingViewHolder(
                 LayoutInflater.from(parent.context).inflate(
-                    R.layout.adapter_home_trending,
+                    R.layout.adapter_response_url,
                     parent,
                     false
                 )
@@ -45,15 +49,12 @@ class HomeNewsAdapter(private val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return when (homepageItem.article_share.id) {
-            -1 -> homepageItem.article_trending.size
-            else -> homepageItem.article_trending.size + 1
-        }
+        return (articleTrending.size + articleShare.size)
     }
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            position < homepageItem.article_trending.size -> ViewType.TRENDING.ordinal
+            position < articleTrending.size -> ViewType.TRENDING.ordinal
             else -> ViewType.SHARE.ordinal
         }
     }
@@ -66,29 +67,36 @@ class HomeNewsAdapter(private val context: Context) :
         when (getItemViewType(position)) {
             ViewType.TRENDING.ordinal -> {
                 Glide.with(context)
-                    .load(homepageItem.article_trending[position].thumbnail)
+                    .load(articleTrending[position].thumbnail.formats.thumbnail.url)
                     .placeholder(circularProgressDrawable)
-                    .into((holder as TrendingViewHolder).imgTrending)
-                holder.tvTrendingHead.text =
-                    homepageItem.article_trending[position].heading
-                holder.tvTrendingDesc.text =
-                    homepageItem.article_trending[position].byline
+                    .into((holder as TrendingViewHolder).responseImage)
+                holder.headline.text =
+                    articleTrending[position].Headline
+                holder.byline.text =
+                    articleTrending[position].byline
+                holder.card.setOnClickListener {
+                    Utils.startURLActivity(context, articleTrending[position].source)
+                }
             }
             ViewType.SHARE.ordinal -> {
                 Glide.with(context)
-                    .load(homepageItem.article_share.image_thumbnail)
+                    .load(articleShare[position - articleTrending.size].thumbnail.formats.thumbnail.url)
                     .placeholder(circularProgressDrawable)
                     .into((holder as ShareViewHolder).imgShare)
                 holder.tvShareHead.text =
-                    homepageItem.article_share.heading
+                    articleShare[position - articleTrending.size].Headline
                 holder.tvShareDescription.text =
-                    homepageItem.article_share.byline
+                    articleShare[position - articleTrending.size].byline
             }
         }
     }
 
-    fun updateData(homepageItem: HomepageItem) {
-        this.homepageItem = homepageItem
+    fun updateData(
+        articleTrending: ArrayList<ArticleTrending>,
+        articleShare: ArrayList<ArticleShare>
+    ) {
+        this.articleTrending = articleTrending
+        this.articleShare = articleShare
         notifyDataSetChanged()
     }
 
@@ -98,15 +106,21 @@ class HomeNewsAdapter(private val context: Context) :
     }
 
     class TrendingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imgTrending: ImageView = itemView.findViewById(R.id.imgTrending)
-        var tvTrendingHead: TextView = itemView.findViewById(R.id.tvTrendingHead)
-        var tvTrendingDesc: TextView = itemView.findViewById(R.id.tvTrendingDescription)
+        val headline: TextView = itemView.findViewById(R.id.tvResponseHeadline)
+        val byline: TextView = itemView.findViewById(R.id.tvResponseByline)
+        val responseImage: ImageView = itemView.findViewById(R.id.ivResponseURL)
+        val responseURL: TextView = itemView.findViewById(R.id.tvResponseURL)
+        val card: MaterialCardView = itemView.findViewById(R.id.cardResponse)
+
+        init {
+            responseURL.visibility = GONE
+        }
     }
 
     class ShareViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvShare: TextView = itemView.findViewById(R.id.tvShare)
-        var imgShare: ImageView = itemView.findViewById(R.id.imgShare)
-        var tvShareHead: TextView = itemView.findViewById(R.id.tvShareHead)
-        var tvShareDescription: TextView = itemView.findViewById(R.id.tvShareDescription)
+        val tvShare: TextView = itemView.findViewById(R.id.tvShare)
+        val imgShare: ImageView = itemView.findViewById(R.id.imgShare)
+        val tvShareHead: TextView = itemView.findViewById(R.id.tvShareHead)
+        val tvShareDescription: TextView = itemView.findViewById(R.id.tvShareDescription)
     }
 }

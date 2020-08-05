@@ -1,19 +1,18 @@
 package `in`.co.tattle.khoj.ui.home.homefragment
 
 import `in`.co.tattle.khoj.R
-import `in`.co.tattle.khoj.model.homenews.Homepage
 import `in`.co.tattle.khoj.ui.adapters.HomeNewsAdapter
+import `in`.co.tattle.khoj.utils.Status
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_home_news.*
 
 class HomeNewsFragment : Fragment(), View.OnClickListener {
@@ -49,7 +48,7 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupObservers() {
-        /*viewModel.getHomepage().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.getHomepage().observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Status.LOADING -> {
                     showLoading()
@@ -57,7 +56,10 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
                 Status.SUCCESS -> {
                     result.data?.let { homepageData ->
                         showHome()
-                        homeNewsAdapter.updateData(homepageData[0])
+                        homeNewsAdapter.updateData(
+                            homepageData.article_trending,
+                            homepageData.article_share
+                        )
                     }
                 }
                 Status.ERROR -> {
@@ -67,14 +69,7 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
                     showOffline()
                 }
             }
-        })*/
-        showLoading()
-        val handler: Handler = Handler()
-        handler.postDelayed(Runnable {
-            showHome()
-            val homepage = Gson().fromJson(temp, Homepage::class.java)
-            homeNewsAdapter.updateData(homepage[0])
-        }, 1500)
+        })
     }
 
     private fun showHome() {
@@ -111,8 +106,7 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
         }
     }
 
-
-    val temp: String = "[\n" +
+    /*val temp: String = "[\n" +
             "    {\n" +
             "        \"id\": 1,\n" +
             "        \"publication_date\": \"2020-07-06\",\n" +
@@ -150,5 +144,5 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
             "            \"image_thumbnail\": \"https://cdn.pixabay.com/photo/2020/05/20/17/46/flower-5197539_1280.jpg\"\n" +
             "        }\n" +
             "    }\n" +
-            "]"
+            "]"*/
 }

@@ -2,9 +2,8 @@ package `in`.co.tattle.khoj.ui.adapters
 
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.model.queryresponse.Response
+import `in`.co.tattle.khoj.utils.Utils
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -89,15 +88,8 @@ class CommResponseAdapter(
                     responses[position].url.headline
                 holder.byline.text =
                     responses[position].url.byline
-                holder.responseURL.tag =
-                    responses[position].url.url
                 holder.responseURL.setOnClickListener {
-                    holder.responseURL.context.startActivity(
-                        Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse(holder.responseURL.tag.toString())
-                        )
-                    )
+                    Utils.startURLActivity(context, responses[position].url.url)
                 }
             }
         }
