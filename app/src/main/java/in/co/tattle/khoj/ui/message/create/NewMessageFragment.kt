@@ -2,8 +2,10 @@ package `in`.co.tattle.khoj.ui.message.create
 
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.model.Question
+import `in`.co.tattle.khoj.model.queryresponse.QueryResponse
 import `in`.co.tattle.khoj.ui.adapters.MessageMediaAdapter
 import `in`.co.tattle.khoj.ui.message.create.screenshot.ScreenshotBottomSheet
+import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
 import `in`.co.tattle.khoj.utils.Constants
 import `in`.co.tattle.khoj.utils.PermissionUtils
 import `in`.co.tattle.khoj.utils.Status
@@ -40,7 +42,8 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
             NewMessageFragment()
     }
 
-    private val READ_STORAGE_PERMISSION: Int = 1000
+    private val READ_STORAGE_PERMISSION_GALLERY: Int = 1000
+    private val READ_STORAGE_PERMISSION_SCREENSHOTS: Int = 1001
     private lateinit var loadingDialog: LoadingDialog
     private lateinit var viewModel: NewMessageViewModel
     private lateinit var mediaAdapter: MessageMediaAdapter
@@ -66,6 +69,20 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
 
         setupClipboardObserver()
         setupMediaObserver()
+
+        checkIntentActions()
+    }
+
+    private fun checkIntentActions() {
+        when (requireActivity().intent.action) {
+            Intent.ACTION_SEND -> {
+                if (requireActivity().intent.type == "text/plain") {
+                    etMessage.setText(requireActivity().intent.getStringExtra(Intent.EXTRA_TEXT))
+                } else if (requireActivity().intent.type == "image/*") {
+                    viewModel.addMedia(requireActivity().intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri)
+                }
+            }
+        }
     }
 
     private fun setupMediaRecycler() {
@@ -108,29 +125,46 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
                 etMessage.setText(tvClipboard.text)
             }
             R.id.btnScreenshot -> {
-                if (PermissionUtils.hasPermission(
-                        requireActivity(),
-                        permission.READ_EXTERNAL_STORAGE
-                    )
-                ) {
-                    showScreenshotSheet()
-                } else {
-                    PermissionUtils.requestPermissions(
-                        this,
-                        arrayOf(permission.READ_EXTERNAL_STORAGE),
-                        READ_STORAGE_PERMISSION
-                    )
-                }
+                checkReadStoragePermission(READ_STORAGE_PERMISSION_SCREENSHOTS)
             }
             R.id.btnMedia -> {
-                startForResult.launch(null)
+                checkReadStoragePermission(READ_STORAGE_PERMISSION_GALLERY)
             }
             R.id.btnSubmit -> {
-                /*val intent = Intent(context, MessageResponseActivity::class.java)
-                intent.putExtra(Constants.MESSAGE_ID, "5f2014b62a50cc43b3e60ae2")
-                startActivity(intent)*/
-                submitQuery()
+                if (validateData()) {
+                    submitQuery()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.media_or_text),
+                        LENGTH_SHORT
+                    ).show()
+                }
             }
+        }
+    }
+
+    private fun validateData(): Boolean {
+        return (!TextUtils.isEmpty(etMessage.text.toString()) || viewModel.media.value!!.size > 0)
+    }
+
+    private fun checkReadStoragePermission(requestCode: Int) {
+        if (PermissionUtils.hasPermission(
+                requireActivity(),
+                permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            if (requestCode == READ_STORAGE_PERMISSION_SCREENSHOTS) {
+                showScreenshotSheet()
+            } else if (requestCode == READ_STORAGE_PERMISSION_GALLERY) {
+                startForResult.launch(null)
+            }
+        } else {
+            PermissionUtils.requestPermissions(
+                this,
+                arrayOf(permission.READ_EXTERNAL_STORAGE),
+                requestCode
+            )
         }
     }
 
@@ -145,7 +179,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
                     Status.SUCCESS -> {
                         loadingDialog.dismiss()
                         Toast.makeText(requireContext(), "SUCCESSS", LENGTH_SHORT).show()
-//                        startIntroActivity()
+                        startResponseActivity(result.data)
                     }
                     Status.ERROR -> {
                         loadingDialog.dismiss()
@@ -163,25 +197,38 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
             })
     }
 
+    private fun startResponseActivity(data: QueryResponse?) {
+        val intent = Intent(context, MessageResponseActivity::class.java)
+        intent.putExtra(Constants.MESSAGE_ID, data!!.id)
+        startActivity(intent)
+        requireActivity().finish()
+    }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == READ_STORAGE_PERMISSION) {
-            handlePermissionResult(grantResults)
+        if (requestCode == READ_STORAGE_PERMISSION_GALLERY ||
+            requestCode == READ_STORAGE_PERMISSION_SCREENSHOTS
+        ) {
+            handlePermissionResult(grantResults, requestCode)
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
 
-    private fun handlePermissionResult(grantResults: IntArray) {
+    private fun handlePermissionResult(grantResults: IntArray, requestCode: Int) {
         val denied =
             grantResults.indices.filter { grantResults[it] != PackageManager.PERMISSION_GRANTED }
         if (denied.isEmpty()) {
             // on permission allowed access screenshots
-            showScreenshotSheet()
+            if (requestCode == READ_STORAGE_PERMISSION_SCREENSHOTS) {
+                showScreenshotSheet()
+            } else if (requestCode == READ_STORAGE_PERMISSION_GALLERY) {
+                startForResult.launch(null)
+            }
         } else {
             // on permission denied handle the result
             Toast.makeText(

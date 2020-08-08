@@ -11,6 +11,7 @@ object PreferenceUtils {
     const val SELECTED_LANGUAGE: String = "selectedLanguage"
     const val APP_CREATOR_TOKEN: String = "creatorToken"
     const val USER_TOKEN: String = "userToken"
+    const val USER_ID: String = "userId"
     const val FCM_DEVICE_TOKEN: String = "fcmToken"
 
     fun getPrefString(context: Context, prefKey: String): String? {

@@ -10,6 +10,7 @@ import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -72,13 +73,15 @@ class NewMessageViewModel(application: Application) : AndroidViewModel(applicati
                 )
             }
             val data = NewMessageRepository.getInstance(context).submitQuery(
-                "Bearer $userToken", question, mediaFiles
+                question, mediaFiles
             )
             emit(Result.success(data))
         } catch (e: NoConnectivityException) {
             emit(Result.noNetwork(null))
         } catch (e: Exception) {
+            Log.e("TESTTTT", "exception " + e.message)
             emit(Result.error(data = null, message = e.message ?: "Error detected"))
         }
     }
+
 }

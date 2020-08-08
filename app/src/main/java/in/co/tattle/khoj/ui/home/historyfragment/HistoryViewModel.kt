@@ -1,59 +1,28 @@
 package `in`.co.tattle.khoj.ui.home.historyfragment
 
-import `in`.co.tattle.khoj.model.timeline.UserTimeline
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import `in`.co.tattle.khoj.data.network.NoConnectivityException
+import `in`.co.tattle.khoj.ui.home.HomepageRepository
+import `in`.co.tattle.khoj.utils.Result
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.liveData
+import kotlinx.coroutines.Dispatchers
 
-class HistoryViewModel : ViewModel() {
+class HistoryViewModel(application: Application) : AndroidViewModel(application) {
+    private val context = getApplication<Application>().applicationContext
 
-    val userTimeline: MutableLiveData<ArrayList<UserTimeline>> by lazy {
-        MutableLiveData<ArrayList<UserTimeline>>()
-    }
-
-    init {
-        val temp: ArrayList<UserTimeline> = arrayListOf()
-        var tempUserTimeline: UserTimeline = UserTimeline(
-            "18 July 2020",
-            "Fact Check: 'Story' Of Teacher Bullied During Online Class Shared As News"
-        )
-        temp.add(tempUserTimeline)
-
-        tempUserTimeline = UserTimeline(
-            "18 July 2020",
-            "Viral Post Makes Numerous False Claims About Effects Of Face Masks"
-        )
-        temp.add(tempUserTimeline)
-        tempUserTimeline = UserTimeline(
-            "14 July 2020",
-            "Prathap NM, hailed as 'drone scientist', passes off German and Japanese drones as his own"
-        )
-        temp.add(tempUserTimeline)
-        tempUserTimeline = UserTimeline(
-            "14 July 2020",
-            "Prathap NM, hailed as 'drone scientist', passes off German and Japanese drones as his own"
-        )
-        temp.add(tempUserTimeline)
-        tempUserTimeline = UserTimeline(
-            "15 July 2020",
-            "Prathap NM, hailed as 'drone scientist', passes off German and Japanese drones as his own"
-        )
-        temp.add(tempUserTimeline)
-        tempUserTimeline = UserTimeline(
-            "16 July 2020",
-            "Prathap NM, hailed as 'drone scientist', passes off German and Japanese drones as his own"
-        )
-        temp.add(tempUserTimeline)
-        tempUserTimeline = UserTimeline(
-            "16 July 2020",
-            "Fact Check: Murder caught on cam goes viral with communal spin"
-        )
-        temp.add(tempUserTimeline)
-        tempUserTimeline = UserTimeline(
-            "16 June 2020",
-            "Amendments made to the Code of Criminal Procedure Act in 2008 & 2010 are intact"
-        )
-        temp.add(tempUserTimeline)
-
-        userTimeline.value = temp
+    fun getQueryHistory() = liveData(Dispatchers.IO) {
+        emit(Result.loading(null))
+        try {
+            emit(
+                Result.success(
+                    data = HomepageRepository.getInstance(context).getQueryHistory()
+                )
+            )
+        } catch (e: NoConnectivityException) {
+            emit(Result.noNetwork(null))
+        } catch (e: Exception) {
+            emit(Result.error(data = null, message = e.message ?: "Error detected"))
+        }
     }
 }

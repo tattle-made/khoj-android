@@ -2,14 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/top_margin">
+    android:layout_height="wrap_content">
 
     <View
         android:id="@+id/view_line"
         android:layout_width="4dp"
         android:layout_height="0dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
         android:background="@color/secondaryLightColor"
         app:layout_constraintBottom_toBottomOf="@+id/separator"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,16 +49,51 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="@dimen/top_margin">
 
             <TextView
                 android:id="@+id/tvTimelineText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/big_text"
+                app:layout_constraintEnd_toStartOf="@+id/ivTimeline"
+                app:layout_constraintHorizontal_weight="0.65"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivTimeline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/top_margin"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/responses_for_query"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.35"
+                app:layout_constraintStart_toEndOf="@id/tvTimelineText"
+                app:layout_constraintTop_toTopOf="@id/tvTimelineText" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvTimelineText, ivTimeline" />
+
+            <TextView
+                android:id="@+id/tvTimelineResponse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/top_margin"
+                android:background="@color/primaryColor"
+                android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/secondaryTextColor"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/barrier_bottom" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

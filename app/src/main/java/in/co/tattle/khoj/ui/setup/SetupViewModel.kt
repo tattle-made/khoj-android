@@ -55,17 +55,15 @@ class SetupViewModel(application: Application) : AndroidViewModel(application) {
             val userNameForEmail = fcmToken?.filter { it.isLetterOrDigit() }
             val userRequest = UserRequest(
                 fcmToken!!,
-                "123456",
+                randomID(),
                 "$userNameForEmail@tattle.co.in"
             )
-            val creatorToken =
-                PreferenceUtils.getPrefString(context, PreferenceUtils.APP_CREATOR_TOKEN)
             val data = SetupRepository.getInstance(context).registerUser(
-                "Bearer $creatorToken",
                 userRequest
             )
+
             //update user token and save user as logged in
-            SetupRepository.getInstance(context).saveUserData(data.jwt)
+            SetupRepository.getInstance(context).saveUserData(data.jwt, data.user._id)
             emit(Result.success(data))
         } catch (e: NoConnectivityException) {
             emit(Result.noNetwork(null))
@@ -75,4 +73,9 @@ class SetupViewModel(application: Application) : AndroidViewModel(application) {
 //            emit(Result.success(null))
         }
     }
+
+    private fun randomID(): String = List(12) {
+        val chars = ('a'..'Z') + ('A'..'Z') + ('0'..'9')
+        chars.random()
+    }.joinToString("")
 }

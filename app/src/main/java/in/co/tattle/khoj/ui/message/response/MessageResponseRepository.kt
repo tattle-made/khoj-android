@@ -2,12 +2,14 @@ package `in`.co.tattle.khoj.ui.message.response
 
 import `in`.co.tattle.khoj.data.network.KhojRetrofitBuilder
 import `in`.co.tattle.khoj.model.queryresponse.QueryResponse
+import `in`.co.tattle.khoj.utils.Constants
 import android.content.Context
 
 class MessageResponseRepository private constructor(val context: Context) {
 
     suspend fun getMessageResponse(messageId: String): QueryResponse {
-        return KhojRetrofitBuilder.getInstance(context).khojApiService.getQueryResponse(messageId)
+        return KhojRetrofitBuilder.getInstance(context).getKhojApiService(Constants.USER_TOKEN)
+            .getQueryResponse(messageId)
     }
 
     companion object {

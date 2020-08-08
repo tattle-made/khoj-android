@@ -45,4 +45,6 @@
     <string name="responses_for_query">आपकी क्वेरी के लिए प्रतिक्रियाएँ</string>
     <string name="read_more_here"><u>और पढ़ें यहाँ</u></string>
     <string name="media">मीडिया</string>
+    <string name="submitting_query">आपकी क्वेरी अपलोड की जा रही है, कृपया प्रतीक्षा करें…</string>
+    <string name="media_or_text">कृपया मीडिया चुनें या अपनी क्वेरी टाइप करें</string>
 </resources>

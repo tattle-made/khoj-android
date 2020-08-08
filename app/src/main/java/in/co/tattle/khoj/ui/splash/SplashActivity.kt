@@ -22,7 +22,6 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
 
         viewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
-
         //animate to make the text visible
         changeTextAlpha()
 
