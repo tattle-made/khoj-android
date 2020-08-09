@@ -31,7 +31,7 @@
     <string name="select_image_or_video">चित्र या वीडियो चुनें</string>
     <string name="choose_screenshot">स्क्रीनशॉट चुनें</string>
     <string name="or">या</string>
-    <string name="supporting_message">एक संदेश जोड़ें</string>
+    <string name="supporting_text">एक संदेश जोड़ें</string>
     <string name="use_recently_copied_text">कॉपी किए टेक्स्ट का उपयोग करें</string>
     <string name="no_media_added">अभी तक कोई मीडिया नहीं जोड़ा गया!</string>
     <string name="spread_the_word">प्रचार कीजिये</string>

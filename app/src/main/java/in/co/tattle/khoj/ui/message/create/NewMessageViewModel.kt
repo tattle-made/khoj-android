@@ -2,7 +2,6 @@ package `in`.co.tattle.khoj.ui.message.create
 
 import `in`.co.tattle.khoj.data.network.NoConnectivityException
 import `in`.co.tattle.khoj.model.Question
-import `in`.co.tattle.khoj.utils.PreferenceUtils
 import `in`.co.tattle.khoj.utils.Result
 import `in`.co.tattle.khoj.utils.Utils
 import android.app.Application
@@ -10,7 +9,6 @@ import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -60,9 +58,6 @@ class NewMessageViewModel(application: Application) : AndroidViewModel(applicati
     fun submitQuery(question: Question) = liveData(Dispatchers.IO) {
         emit(Result.loading(null))
         try {
-            val userToken: String? =
-                PreferenceUtils.getPrefString(context, PreferenceUtils.USER_TOKEN)
-
             val mediaFiles: ArrayList<MultipartBody.Part> = arrayListOf()
             for (i in 0 until media.value!!.size) {
                 mediaFiles.add(
@@ -79,7 +74,6 @@ class NewMessageViewModel(application: Application) : AndroidViewModel(applicati
         } catch (e: NoConnectivityException) {
             emit(Result.noNetwork(null))
         } catch (e: Exception) {
-            Log.e("TESTTTT", "exception " + e.message)
             emit(Result.error(data = null, message = e.message ?: "Error detected"))
         }
     }

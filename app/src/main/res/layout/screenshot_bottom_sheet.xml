@@ -11,15 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tvSelect"
+            style="@style/heading6TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/please_select_a_screenshot"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            android:text="@string/please_select_a_screenshot" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerScreenshots"
@@ -30,11 +29,29 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutClipboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvClipboardText"
+            style="@style/body1TextPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_secondary_rounded"
+            android:padding="@dimen/top_margin"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/layoutError"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tvErrorIcon"
@@ -52,11 +69,10 @@
 
         <TextView
             android:id="@+id/tvError"
+            style="@style/body1TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/big_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

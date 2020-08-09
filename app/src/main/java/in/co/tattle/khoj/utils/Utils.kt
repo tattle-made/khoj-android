@@ -70,7 +70,6 @@ class Utils {
                 name = returnCursor.getString(nameIndex)
                 returnCursor.close()
             }
-
             return name
         }
 

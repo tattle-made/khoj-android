@@ -15,11 +15,10 @@
 
         <TextView
             android:id="@+id/tvTimeline"
+            style="@style/heading5TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/search_timeline"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/big_text"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -48,12 +47,12 @@
 
         <TextView
             android:id="@+id/tvLoading"
+            style="@style/body1TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/loading_data"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/big_text"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,11 +76,11 @@
 
         <TextView
             android:id="@+id/tvError"
+            style="@style/body1TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/big_text"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,10 +99,10 @@
             android:id="@+id/btnNewMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/top_margin"
             android:letterSpacing="0"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:paddingStart="@dimen/page_margin"
+            android:paddingEnd="@dimen/page_margin"
             android:text="@string/try_it"
             android:textColor="@color/secondaryTextColor"
             android:textSize="20sp"

@@ -1,6 +1,7 @@
 package `in`.co.tattle.khoj.ui.message.response
 
 import `in`.co.tattle.khoj.R
+import `in`.co.tattle.khoj.model.Feedback
 import `in`.co.tattle.khoj.model.queryresponse.QueryResponse
 import `in`.co.tattle.khoj.model.queryresponse.Response
 import `in`.co.tattle.khoj.ui.adapters.CommResponseAdapter
@@ -15,6 +16,9 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.RadioGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -22,7 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.fragment_message_response.*
 
-class MessageResponseFragment : Fragment() {
+class MessageResponseFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
 
     companion object {
         fun newInstance(messageId: String): MessageResponseFragment {
@@ -34,6 +38,7 @@ class MessageResponseFragment : Fragment() {
         }
     }
 
+    private lateinit var queryID: String
     private lateinit var messageId: String
     private lateinit var viewModel: MessageResponseViewModel
 
@@ -50,13 +55,6 @@ class MessageResponseFragment : Fragment() {
         messageId = arguments?.getString(Constants.MESSAGE_ID)!!
 
         viewModel = ViewModelProvider(this).get(MessageResponseViewModel::class.java)
-        /*Glide.with(this)
-            .load("https://cdn.pixabay.com/photo/2014/02/09/05/19/woman-262498_1280.jpg")
-            .into(ivMessage)
-
-        tvMessage.text =
-            "A photograph of a man with Uttar Pardesh Chief Minister Yogi Adityanath was shared by Jan Adhikar Party leader Rajesh Ranjan, popularly known as Pappu Yadav. He claimed that the man is gangster Vikas Dubey whose attempted arrest in Kanpur led to the death of eight policemen."*/
-
         setupObservers()
     }
 
@@ -68,6 +66,7 @@ class MessageResponseFragment : Fragment() {
                         showLoading()
                     }
                     Status.SUCCESS -> {
+                        queryID = queryResponse.data!!._id
                         showResponse(queryResponse.data)
                     }
                     Status.ERROR -> {
@@ -131,6 +130,13 @@ class MessageResponseFragment : Fragment() {
         }
 
         //setup user feedback
+        cardResponse.visibility = VISIBLE
+        if (TextUtils.equals(Constants.POSITIVE, queryResponse.user_feedback)) {
+            rgFeedback.check(rbYes.id)
+        } else if (TextUtils.equals(Constants.NEGATIVE, queryResponse.user_feedback)) {
+            rgFeedback.check(rbNo.id)
+        }
+        rgFeedback.setOnCheckedChangeListener(this)
     }
 
     private fun setupCommResponseRecycler(media: ArrayList<Response>) {
@@ -158,5 +164,45 @@ class MessageResponseFragment : Fragment() {
         layoutError.visibility = VISIBLE
         imgError.setImageResource(R.drawable.ic_no_network)
         tvError.setText(R.string.offline)
+    }
+
+    override fun onCheckedChanged(rg: RadioGroup?, rb: Int) {
+        if (rg?.id == R.id.rgFeedback) {
+            if (rb == R.id.rbYes) {
+                submitFeedback(Feedback(Constants.POSITIVE))
+            } else if (rb == R.id.rbNo) {
+                submitFeedback(Feedback(Constants.NEGATIVE))
+            }
+        }
+    }
+
+    private fun submitFeedback(feedback: Feedback) {
+        viewModel.submitFeedback(queryID, feedback).observe(
+            viewLifecycleOwner, Observer { feedbackResponse ->
+                when (feedbackResponse.status) {
+                    Status.SUCCESS -> {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.feedback_registered),
+                            LENGTH_SHORT
+                        ).show()
+                    }
+                    Status.ERROR -> {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.error_try_later),
+                            LENGTH_SHORT
+                        ).show()
+                    }
+                    Status.NO_NETWORK -> {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.offline),
+                            LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        )
     }
 }

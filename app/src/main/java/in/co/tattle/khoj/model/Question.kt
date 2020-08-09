@@ -1,7 +1,6 @@
 package `in`.co.tattle.khoj.model
 
-data class IntroObject(
-    val description: String,
-    val imageId: Int,
-    val animation: Int
+data class Question(
+    val question: String
+
 )

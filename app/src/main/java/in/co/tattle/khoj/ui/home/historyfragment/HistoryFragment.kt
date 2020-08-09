@@ -80,9 +80,9 @@ class HistoryFragment : Fragment(), OnClickListener {
     }
 
     private
-    val onTimelineClick: () -> Unit = {
+    val onTimelineClick: (queryId: String) -> Unit = { queryId ->
         val intent = Intent(context, MessageResponseActivity::class.java)
-        intent.putExtra(Constants.MESSAGE_ID, "5f2014b62a50cc43b3e60ae2")
+        intent.putExtra(Constants.MESSAGE_ID, queryId)
         startActivity(intent)
     }
 

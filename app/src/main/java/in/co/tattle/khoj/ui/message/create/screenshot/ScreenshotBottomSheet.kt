@@ -6,6 +6,7 @@ import `in`.co.tattle.khoj.ui.message.create.ScreenshotViewModel
 import `in`.co.tattle.khoj.utils.Constants
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -17,8 +18,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.screenshot_bottom_sheet.*
 
-class ScreenshotBottomSheet(val onScreenshotSelect: (uri: Uri) -> Unit) :
-    BottomSheetDialogFragment() {
+class ScreenshotBottomSheet(
+    private val onScreenshotSelect: (uri: Uri) -> Unit,
+    private val onCopyTextClick: (clipboardText: String) -> Unit,
+    private val type: String,
+    private val clipboardText: String?
+) :
+    BottomSheetDialogFragment(), View.OnClickListener {
     private lateinit var viewModel: ScreenshotViewModel
     private lateinit var mediaAdapter: MessageMediaAdapter
 
@@ -34,9 +40,17 @@ class ScreenshotBottomSheet(val onScreenshotSelect: (uri: Uri) -> Unit) :
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ScreenshotViewModel::class.java)
 
-        setupRecycler()
-
-        setupScreenshotObserver()
+        if (TextUtils.equals(type, Constants.SCREENSHOTS)) {
+            layoutScreenshot.visibility = VISIBLE
+            layoutClipboard.visibility = GONE
+            setupRecycler()
+            setupScreenshotObserver()
+        } else if (TextUtils.equals(type, Constants.CLIPBOARD)) {
+            layoutClipboard.visibility = VISIBLE
+            layoutScreenshot.visibility = GONE
+            tvClipboardText.setOnClickListener(this)
+            tvClipboardText.text = clipboardText
+        }
     }
 
     private fun setupRecycler() {
@@ -46,7 +60,7 @@ class ScreenshotBottomSheet(val onScreenshotSelect: (uri: Uri) -> Unit) :
     }
 
     private fun setupScreenshotObserver() {
-        viewModel.screenshots.observe(viewLifecycleOwner, Observer { screenshots ->
+        viewModel.getScreenshots().observe(viewLifecycleOwner, Observer { screenshots ->
             if (screenshots != null) {
                 if (screenshots.size > 0) {
                     showScreenshots(screenshots)
@@ -76,5 +90,12 @@ class ScreenshotBottomSheet(val onScreenshotSelect: (uri: Uri) -> Unit) :
     private val onAdapterClick: (uri: Uri) -> Unit = { uri ->
         onScreenshotSelect(uri)
         this.dismiss()
+    }
+
+    override fun onClick(v: View?) {
+        if (v!!.id == R.id.tvClipboardText) {
+            onCopyTextClick(clipboardText!!)
+            this.dismiss()
+        }
     }
 }

@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:alpha="0"
         android:text="@string/welcome_to_khoj"
+        android:textSize="@dimen/big_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_tattle_logo" />

@@ -1,5 +1,6 @@
 package `in`.co.tattle.khoj.data.network
 
+import `in`.co.tattle.khoj.model.Feedback
 import `in`.co.tattle.khoj.model.Question
 import `in`.co.tattle.khoj.model.homenews.HomepageResponse
 import `in`.co.tattle.khoj.model.queryhistory.QueryHistory
@@ -19,6 +20,12 @@ interface KhojApiService {
     suspend fun registerUser(
         @Body userRequest: UserRequest
     ): UserResponse
+
+    @POST("/queries/{queryId}/feedback")
+    suspend fun submitFeedback(
+        @Path("queryId") queryId: String,
+        @Body feedback: Feedback
+    ): QueryResponse
 
     @GET("/queries/{messageId}")
     suspend fun getQueryResponse(@Path("messageId") messageId: String): QueryResponse

@@ -31,11 +31,6 @@ class SetupViewModel(application: Application) : AndroidViewModel(application) {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val updated = task.result
-                    Log.d("TESTTTTTT", "Config params updated: $updated")
-                    Log.d(
-                        "TESTTTTTT",
-                        "Config params updated: " + remoteConfig.getString("android_app_user_creator")
-                    )
                     PreferenceUtils.setPrefString(
                         context,
                         PreferenceUtils.APP_CREATOR_TOKEN,

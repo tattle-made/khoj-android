@@ -29,9 +29,9 @@
     <string name="error_try_later">Something went wrong, please try later</string>
     <string name="submit">SUBMIT</string>
     <string name="select_image_or_video">Select image or video</string>
-    <string name="choose_screenshot">Choose screenshot</string>
+    <string name="choose_screenshot">Choose from screenshots</string>
     <string name="or">OR</string>
-    <string name="supporting_message">Supporting message</string>
+    <string name="supporting_text">Supporting text</string>
     <string name="use_recently_copied_text">Use recently copied text</string>
     <string name="no_media_added">No media added to the message yet!</string>
     <string name="spread_the_word">Spread the word</string>
@@ -47,5 +47,11 @@
     <string name="media">Media</string>
     <string name="submitting_query">Submitting your query, please wait…</string>
     <string name="media_or_text">Either media or question is required</string>
+    <string name="attach_media">Attach images and text that you want to verify</string>
     <string name="no_queries_found">Looks like you haven\'t tried Khoj to submit a query yet</string>
+    <string name="need_permission">We need your permission to access the images stored in your device to make your query more meaningful</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">cancel</string>
+    <string name="choose_from_these">Or choose from these options</string>
+    <string name="feedback_registered">Feedback registered</string>
 </resources>

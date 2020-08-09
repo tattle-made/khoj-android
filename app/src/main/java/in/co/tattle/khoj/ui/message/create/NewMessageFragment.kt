@@ -4,6 +4,7 @@ import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.model.Question
 import `in`.co.tattle.khoj.model.queryresponse.QueryResponse
 import `in`.co.tattle.khoj.ui.adapters.MessageMediaAdapter
+import `in`.co.tattle.khoj.ui.message.create.screenshot.PermissionBottomSheet
 import `in`.co.tattle.khoj.ui.message.create.screenshot.ScreenshotBottomSheet
 import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
 import `in`.co.tattle.khoj.utils.Constants
@@ -60,9 +61,9 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
 
         loadingDialog = LoadingDialog(requireContext())
         viewModel = ViewModelProvider(this).get(NewMessageViewModel::class.java)
-        btnCopy.setOnClickListener(this)
         btnScreenshot.setOnClickListener(this)
         btnMedia.setOnClickListener(this)
+        btnRecentlyCopied.setOnClickListener(this)
         btnSubmit.setOnClickListener(this)
 
         setupMediaRecycler()
@@ -93,37 +94,22 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
 
     private fun setupMediaObserver() {
         viewModel.media.observe(viewLifecycleOwner, Observer { mediaList ->
-            if (mediaList.size > 0) {
-                recyclerMedia.visibility = VISIBLE
-                tvNoMedia.visibility = GONE
-                mediaAdapter.updateMedia(mediaList)
-            } else {
-                recyclerMedia.visibility = GONE
-                tvNoMedia.visibility = VISIBLE
-            }
+            mediaAdapter.updateMedia(mediaList)
         })
     }
 
     private fun setupClipboardObserver() {
         viewModel.getClipBoard().observe(viewLifecycleOwner, Observer { clipboardText ->
             if (TextUtils.isEmpty(clipboardText)) {
-                tvOr.visibility = GONE
-                btnCopy.visibility = GONE
-                tvClipboard.visibility = GONE
+                btnRecentlyCopied.visibility = GONE
             } else {
-                tvOr.visibility = VISIBLE
-                btnCopy.visibility = VISIBLE
-                tvClipboard.visibility = VISIBLE
-                tvClipboard.text = clipboardText
+                btnRecentlyCopied.visibility = VISIBLE
             }
         })
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.btnCopy -> {
-                etMessage.setText(tvClipboard.text)
-            }
             R.id.btnScreenshot -> {
                 checkReadStoragePermission(READ_STORAGE_PERMISSION_SCREENSHOTS)
             }
@@ -141,6 +127,9 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
                     ).show()
                 }
             }
+            R.id.btnRecentlyCopied -> {
+                showScreenshotSheet(Constants.CLIPBOARD)
+            }
         }
     }
 
@@ -155,16 +144,12 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
             )
         ) {
             if (requestCode == READ_STORAGE_PERMISSION_SCREENSHOTS) {
-                showScreenshotSheet()
+                showScreenshotSheet(Constants.SCREENSHOTS)
             } else if (requestCode == READ_STORAGE_PERMISSION_GALLERY) {
                 startForResult.launch(null)
             }
         } else {
-            PermissionUtils.requestPermissions(
-                this,
-                arrayOf(permission.READ_EXTERNAL_STORAGE),
-                requestCode
-            )
+            showPermissionSheet(requestCode)
         }
     }
 
@@ -225,7 +210,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
         if (denied.isEmpty()) {
             // on permission allowed access screenshots
             if (requestCode == READ_STORAGE_PERMISSION_SCREENSHOTS) {
-                showScreenshotSheet()
+                showScreenshotSheet(Constants.SCREENSHOTS)
             } else if (requestCode == READ_STORAGE_PERMISSION_GALLERY) {
                 startForResult.launch(null)
             }
@@ -239,10 +224,21 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun showScreenshotSheet() {
+    private fun showScreenshotSheet(type: String) {
         val screenshotBottomSheet =
-            ScreenshotBottomSheet(onScreenshotSelect)
+            ScreenshotBottomSheet(
+                onScreenshotSelect,
+                onCopyTextClick,
+                type,
+                viewModel.getClipBoard().value
+            )
         screenshotBottomSheet.show(activity?.supportFragmentManager!!, null)
+    }
+
+    private fun showPermissionSheet(requestCode: Int) {
+        val permissionBottomSheet =
+            PermissionBottomSheet(permissionSheetCallback, requestCode)
+        permissionBottomSheet.show(activity?.supportFragmentManager!!, null)
     }
 
     private val startForResult =
@@ -274,5 +270,20 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
     private val onScreenshotSelect: (uri: Uri) -> Unit = { uri ->
         viewModel.addMedia(uri)
     }
+
+    private val onCopyTextClick: (clipboardText: String) -> Unit = { clipboardText ->
+        etMessage.setText(clipboardText)
+    }
+
+    private val permissionSheetCallback: (permissionGranted: Boolean, requestCode: Int) -> Unit =
+        { b: Boolean, code: Int ->
+            if (b) {
+                PermissionUtils.requestPermissions(
+                    this,
+                    arrayOf(permission.READ_EXTERNAL_STORAGE),
+                    code
+                )
+            }
+        }
 
 }

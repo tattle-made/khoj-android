@@ -16,11 +16,11 @@
 
     <TextView
         android:id="@+id/tvLoadingText"
+        style="@style/body1TextPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/big_text"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/loadingProgress"

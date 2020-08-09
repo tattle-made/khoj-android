@@ -87,17 +87,17 @@ class IntroActivity : BaseActivity() {
             listOf(
                 IntroObject(
                     getString(R.string.welcome_to_khoj_intro),
-                    R.drawable.ic_namaste,
+                    R.drawable.ic_illustration_01,
                     R.anim.alpha_anim
                 ),
                 IntroObject(
                     getString(R.string.get_fake_news_list),
-                    R.drawable.ic_fake_news,
+                    R.drawable.ic_illustration_02,
                     R.anim.float_down
                 ),
                 IntroObject(
                     getString(R.string.use_khoj_to_fact_check),
-                    R.drawable.ic_detect,
+                    R.drawable.ic_illustration_01,
                     R.anim.zoom
                 )
             )

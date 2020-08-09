@@ -16,7 +16,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 
-class HistoryAdapter(val onTimelineClick: () -> Unit) :
+class HistoryAdapter(val onTimelineClick: (queryId: String) -> Unit) :
     RecyclerView.Adapter<HistoryAdapter.TimelineViewHolder>() {
 
     private var queryHistory: ArrayList<QueryHistoryItem> = arrayListOf()
@@ -63,16 +63,23 @@ class HistoryAdapter(val onTimelineClick: () -> Unit) :
             circularProgressDrawable.strokeWidth = 5f
             circularProgressDrawable.centerRadius = 30f
             circularProgressDrawable.start()
-            Glide.with(holder.timelineImage.context)
-                .load(queryHistory[position].media[0].formats.thumbnail.url)
-                .placeholder(circularProgressDrawable)
-                .into(holder.timelineImage)
+            if (TextUtils.isEmpty(queryHistory[position].question)) {
+                Glide.with(holder.timelineImage.context)
+                    .load(queryHistory[position].media[0].formats.small.url)
+                    .placeholder(circularProgressDrawable)
+                    .into(holder.timelineImage)
+            } else {
+                Glide.with(holder.timelineImage.context)
+                    .load(queryHistory[position].media[0].formats.thumbnail.url)
+                    .placeholder(circularProgressDrawable)
+                    .into(holder.timelineImage)
+            }
         } else {
             holder.timelineImage.visibility = GONE
         }
 
         holder.cardMessage.setOnClickListener {
-            onTimelineClick()
+            onTimelineClick(queryHistory[position]._id)
         }
     }
 

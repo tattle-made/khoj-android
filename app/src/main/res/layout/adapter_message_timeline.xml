@@ -25,11 +25,10 @@
 
     <TextView
         android:id="@+id/tvDate"
+        style="@style/body1TextPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/progress_size"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/big_text"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/view_circle"
         app:layout_constraintStart_toEndOf="@+id/view_line"
@@ -42,7 +41,7 @@
         android:layout_marginStart="@dimen/progress_size"
         android:layout_marginTop="@dimen/top_margin"
         android:layout_marginEnd="@dimen/top_margin"
-        app:cardElevation="@dimen/top_margin"
+        app:cardElevation="@dimen/card_elevation"
         app:layout_constraintStart_toStartOf="@id/tvDate"
         app:layout_constraintTop_toBottomOf="@+id/tvDate">
 
@@ -53,10 +52,9 @@
 
             <TextView
                 android:id="@+id/tvTimelineText"
+                style="@style/heading6TextPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="@color/primaryTextColor"
                 app:layout_constraintEnd_toStartOf="@+id/ivTimeline"
                 app:layout_constraintHorizontal_weight="0.65"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,14 +81,14 @@
 
             <TextView
                 android:id="@+id/tvTimelineResponse"
+                style="@style/body1TextSecondary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/top_margin"
-                android:background="@color/primaryColor"
+                android:background="@drawable/rounded_corner_primary_color"
                 android:padding="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/secondaryTextColor"
-                android:visibility="gone"
+                android:text="Response for the query goes here"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/barrier_bottom" />

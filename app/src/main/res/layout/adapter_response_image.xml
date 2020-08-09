@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/card_margin"
+    android:layout_marginStart="@dimen/top_margin"
     android:layout_marginTop="@dimen/card_margin"
-    android:layout_marginEnd="@dimen/card_margin"
-    android:layout_marginBottom="@dimen/top_margin"
-    app:cardElevation="6dp">
+    android:layout_marginEnd="@dimen/top_margin"
+    android:layout_marginBottom="@dimen/page_margin"
+    app:cardElevation="@dimen/card_elevation">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,10 +24,10 @@
 
         <TextView
             android:id="@+id/tvResponseCaption"
+            style="@style/body1TextPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/top_margin"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/primaryTextColor" />
     </LinearLayout>
 

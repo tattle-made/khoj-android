@@ -21,4 +21,73 @@
         <item name="android:textColorPrimary">@color/secondaryTextColor</item>
     </style>
 
+    <style name="heading3TextPrimary" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="heading3TextSecondary" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="heading4TextPrimary" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="heading4TextSecondary" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="heading5TextPrimary" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="heading5TextSecondary" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="heading6TextPrimary" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="heading6TextSecondary" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/headline</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="body1TextPrimary" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/body</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="body1TextSecondary" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/body</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="body2TextPrimary" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/body</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="body2TextSecondary" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/body</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+    <style name="captionTextPrimary" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/body</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="captionTextSecondary" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/body</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
 </resources>

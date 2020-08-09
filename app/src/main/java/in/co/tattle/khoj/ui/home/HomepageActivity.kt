@@ -18,11 +18,12 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_homepage.*
 
+
 class HomepageActivity : BaseActivity(), View.OnClickListener,
     BottomNavigationView.OnNavigationItemSelectedListener, AppBarLayout.OnOffsetChangedListener {
 
-    var isShow = true
-    var scrollRange = -1
+    private var isShow = true
+    private var scrollRange = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +64,15 @@ class HomepageActivity : BaseActivity(), View.OnClickListener,
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_home, fragment)
         fragmentTransaction.commit()
+    }
+
+    override fun onBackPressed() {
+        val selectedItemId = navHome.selectedItemId
+        if (R.id.menu_home != selectedItemId) {
+            navHome.selectedItemId = R.id.menu_home
+        } else {
+            super.onBackPressed()
+        }
     }
 
     override fun onClick(view: View?) {

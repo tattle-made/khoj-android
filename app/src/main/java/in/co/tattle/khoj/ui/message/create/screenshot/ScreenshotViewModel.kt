@@ -6,20 +6,17 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
+import kotlinx.coroutines.Dispatchers
 
 class ScreenshotViewModel(application: Application) : AndroidViewModel(application) {
     private val context = getApplication<Application>().applicationContext
 
-    val screenshots: MutableLiveData<ArrayList<Uri>> by lazy {
-        MutableLiveData<ArrayList<Uri>>()
-    }
-
-    init {
-        screenshots.value = getScreenshots()
-    }
-
-    private fun getScreenshots(): ArrayList<Uri>? {
+    //    val screenshots: MutableLiveData<ArrayList<Uri>> by lazy {
+//        MutableLiveData<ArrayList<Uri>>()
+//    }
+//
+    fun getScreenshots() = liveData(Dispatchers.IO) {
         //get the media ID and display name from media store
         val projection = arrayOf(
             MediaStore.Images.Media._ID,
@@ -50,11 +47,11 @@ class ScreenshotViewModel(application: Application) : AndroidViewModel(applicati
         when (mCursor?.count) {
             null -> {
                 mCursor?.close()
-                return null
+                emit(null)
             }
             0 -> {
-                mCursor?.close()
-                return arrayListOf()
+                mCursor.close()
+                emit(arrayListOf())
             }
             else -> {
                 //get the screenshots and display to the user
@@ -67,7 +64,7 @@ class ScreenshotViewModel(application: Application) : AndroidViewModel(applicati
                     )
                     imageList.add(uri)
                 }
-                return imageList
+                emit(imageList)
             }
         }
     }

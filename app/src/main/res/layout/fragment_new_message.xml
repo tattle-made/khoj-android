@@ -9,132 +9,85 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="@dimen/page_margin"
+        android:layout_margin="@dimen/page_margin"
         app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvNoMedia"
+            android:id="@+id/tvAttach"
+            style="@style/heading5TextPrimary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/page_margin"
-            android:drawableTop="@drawable/ic_baseline_error_primary"
-            android:drawablePadding="@dimen/top_margin"
-            android:gravity="center"
-            android:text="@string/no_media_added"
-            android:textColor="@color/primaryColor"
-            android:textSize="@dimen/big_text"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/cardClipboard"
+            android:layout_height="0dp"
+            android:text="@string/attach_media"
+            android:textColor="@color/secondaryColor"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerMedia"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/page_margin"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/cardClipboard"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardClipboard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="@dimen/page_margin"
-            app:cardElevation="@dimen/top_margin"
-            app:layout_constraintBottom_toTopOf="@id/btnMedia">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/top_margin">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilMessage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/top_margin"
-                    android:hint="@string/supporting_message"
-                    android:paddingTop="0dp"
-                    app:boxBackgroundColor="@color/secondaryTextColor"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etMessage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="4dp"
-                        android:paddingEnd="@dimen/top_margin"
-                        android:paddingBottom="6dp"
-                        android:textColor="@color/primaryTextColor" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/tvOr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/top_margin"
-                    android:text="@string/or"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="@dimen/big_text"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tilMessage" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCopy"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:letterSpacing="0"
-                    android:text="@string/use_recently_copied_text"
-                    android:textColor="@color/secondaryColor"
-                    android:textSize="@dimen/small_text"
-                    app:layout_constraintTop_toBottomOf="@+id/tvOr" />
-
-                <TextView
-                    android:id="@+id/tvClipboard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="2"
-                    android:textColor="@color/primaryTextColor"
-                    app:layout_constraintTop_toBottomOf="@+id/btnCopy" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+            app:layout_constraintBottom_toTopOf="@+id/btnMedia"
+            app:layout_constraintTop_toBottomOf="@id/tvAttach" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnMedia"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/top_margin"
             android:letterSpacing="0"
-            android:paddingTop="@dimen/top_margin"
-            android:paddingBottom="@dimen/top_margin"
+            android:paddingTop="@dimen/page_margin"
+            android:paddingBottom="@dimen/page_margin"
             android:text="@string/select_image_or_video"
             app:backgroundTint="@color/secondaryColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnScreenshot"
+            app:layout_constraintBottom_toTopOf="@id/tilMessage"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMessage"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/page_margin"
+            android:hint="@string/supporting_text"
+            app:boxBackgroundColor="@color/secondaryTextColor"
+            app:helperText="Add any supporting text or query"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/primaryTextColor"
+            app:layout_constraintBottom_toTopOf="@+id/btnScreenshot">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryTextColor" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnScreenshot"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/page_margin"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/top_margin"
+            android:gravity="center"
             android:letterSpacing="0"
-            android:paddingTop="@dimen/top_margin"
-            android:paddingBottom="@dimen/top_margin"
             android:text="@string/choose_screenshot"
             android:textColor="@color/secondaryColor"
-            app:layout_constraintBottom_toBottomOf="@+id/btnMedia"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnRecentlyCopied"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecentlyCopied"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:letterSpacing="0"
+            android:text="@string/use_recently_copied_text"
+            android:textColor="@color/secondaryColor"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnMedia"
-            app:layout_constraintTop_toTopOf="@id/btnMedia" />
+            app:layout_constraintStart_toEndOf="@+id/btnScreenshot" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -149,7 +102,7 @@
         android:insetBottom="0dp"
         android:letterSpacing="0"
         android:text="@string/submit"
-        app:backgroundTint="@color/secondaryColor"
+        app:backgroundTint="@color/primaryColor"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
