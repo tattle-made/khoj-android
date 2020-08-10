@@ -14,9 +14,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
-class HomeNewsAdapter(private val context: Context) :
+class HomeNewsAdapter(
+    private val context: Context,
+    val shareNews: (articleShare: ArticleShare) -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var articleTrending: ArrayList<ArticleTrending> = arrayListOf()
@@ -87,6 +91,9 @@ class HomeNewsAdapter(private val context: Context) :
                     articleShare[position - articleTrending.size].Headline
                 holder.tvShareDescription.text =
                     articleShare[position - articleTrending.size].byline
+                holder.btnNewsShare.setOnClickListener {
+                    shareNews(articleShare[position - articleTrending.size])
+                }
             }
         }
     }
@@ -110,7 +117,7 @@ class HomeNewsAdapter(private val context: Context) :
         val byline: TextView = itemView.findViewById(R.id.tvResponseByline)
         val responseImage: ImageView = itemView.findViewById(R.id.ivResponseURL)
         val responseURL: TextView = itemView.findViewById(R.id.tvResponseURL)
-        val card: MaterialCardView = itemView.findViewById(R.id.cardResponse)
+        val card: MaterialCardView = itemView.findViewById(R.id.cardFeedback)
 
         init {
             responseURL.visibility = GONE
@@ -122,5 +129,6 @@ class HomeNewsAdapter(private val context: Context) :
         val imgShare: ImageView = itemView.findViewById(R.id.imgShare)
         val tvShareHead: TextView = itemView.findViewById(R.id.tvShareHead)
         val tvShareDescription: TextView = itemView.findViewById(R.id.tvShareDescription)
+        val btnNewsShare: MaterialButton = itemView.findViewById(R.id.btnNewsShare)
     }
 }

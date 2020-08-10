@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardFeedback"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/top_margin"
+    android:layout_marginTop="@dimen/card_margin"
+    android:layout_marginEnd="@dimen/top_margin"
+    android:layout_marginBottom="@dimen/page_margin"
+    app:cardBackgroundColor="@color/primaryColor"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/top_margin">
+
+        <TextView
+            android:id="@+id/tvSummaryHeadline"
+            style="@style/heading6TextSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondaryColor"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSummaryParagraph"
+            style="@style/body1TextSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_margin"
+            app:layout_constraintTop_toBottomOf="@id/tvSummaryHeadline" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnResponseShare"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/top_margin"
+            android:letterSpacing="0"
+            android:text="@string/spread_the_word"
+            android:textColor="@color/secondaryTextColor"
+            app:icon="@drawable/ic_share_white"
+            app:iconPadding="@dimen/page_margin"
+            app:iconTint="@color/secondaryTextColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSummaryParagraph" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

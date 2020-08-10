@@ -7,6 +7,7 @@ data class Response(
     val created_by: String,
     val id: String,
     val image: ImageX,
+    val summary: Summary,
     val text: Text,
     val type: String,
     val updatedAt: String,

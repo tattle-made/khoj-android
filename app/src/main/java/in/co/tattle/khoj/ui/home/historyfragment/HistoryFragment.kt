@@ -40,7 +40,7 @@ class HistoryFragment : Fragment(), OnClickListener {
 
         imgRefresh.setOnClickListener(this)
         btnNewMessage.setOnClickListener(this)
-
+        btnSample.setOnClickListener(this)
         setupRecycler()
     }
 
@@ -129,6 +129,10 @@ class HistoryFragment : Fragment(), OnClickListener {
             setupObserver()
         } else if (view?.id == R.id.btnNewMessage) {
             startActivity(Intent(requireContext(), NewMessageActivity::class.java))
+        } else if (view?.id == R.id.btnSample) {
+            val intent = Intent(context, MessageResponseActivity::class.java)
+            intent.putExtra(Constants.MESSAGE_ID, "5f2014b62a50cc43b3e60ae2")
+            startActivity(intent)
         }
     }
 

@@ -46,65 +46,6 @@
                 android:padding="@dimen/top_margin"
                 app:layout_constraintTop_toBottomOf="@id/mediaViewPager" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardResult"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/top_margin"
-                android:layout_marginTop="@dimen/page_margin"
-                android:layout_marginEnd="@dimen/top_margin"
-                app:cardBackgroundColor="@color/primaryColor"
-                app:cardElevation="@dimen/card_elevation"
-                app:layout_constraintTop_toBottomOf="@id/tvQuestion">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/top_margin">
-
-                    <ImageView
-                        android:id="@+id/ivResult"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/white_circle"
-                        android:contentDescription="@string/happy_with_result"
-                        android:padding="@dimen/top_margin"
-                        android:src="@drawable/ic_done"
-                        app:layout_constraintBottom_toBottomOf="@id/tvResult"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvResult"
-                        style="@style/body1TextSecondary"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/top_margin"
-                        android:drawablePadding="@dimen/top_margin"
-                        android:text="The message you posted has been verified as fake news!"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivResult"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ivResult"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnResponseShare"
-                        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:letterSpacing="0"
-                        android:text="@string/spread_the_word"
-                        android:textColor="@color/secondaryTextColor"
-                        app:icon="@drawable/ic_share_white"
-                        app:iconPadding="@dimen/page_margin"
-                        app:iconTint="@color/secondaryTextColor"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivResult" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
             <TextView
                 android:id="@+id/tvCommResponse"
                 style="@style/heading5TextPrimary"
@@ -114,7 +55,7 @@
                 android:paddingStart="@dimen/top_margin"
                 android:paddingEnd="@dimen/top_margin"
                 android:text="@string/responses_for_query"
-                app:layout_constraintTop_toBottomOf="@id/cardResult" />
+                app:layout_constraintTop_toBottomOf="@id/tvQuestion" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerCommunityResponse"
@@ -124,15 +65,15 @@
                 app:layout_constraintTop_toBottomOf="@id/tvCommResponse" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardResponse"
+                android:id="@+id/cardFeedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/top_margin"
                 android:layout_marginTop="@dimen/top_margin"
                 android:layout_marginEnd="@dimen/top_margin"
                 android:layout_marginBottom="@dimen/top_margin"
-                app:cardElevation="@dimen/card_elevation"
                 android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recyclerCommunityResponse">
 

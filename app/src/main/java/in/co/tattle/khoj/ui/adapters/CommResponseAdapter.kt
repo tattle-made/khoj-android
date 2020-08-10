@@ -2,6 +2,7 @@ package `in`.co.tattle.khoj.ui.adapters
 
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.model.queryresponse.Response
+import `in`.co.tattle.khoj.model.queryresponse.Summary
 import `in`.co.tattle.khoj.utils.Utils
 import android.content.Context
 import android.text.TextUtils
@@ -15,7 +16,8 @@ import com.bumptech.glide.Glide
 
 class CommResponseAdapter(
     private val context: Context,
-    private val responses: ArrayList<Response>
+    private val responses: ArrayList<Response>,
+    val shareSummary: (summary: Summary) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -42,6 +44,13 @@ class CommResponseAdapter(
                     false
                 )
             )
+            ViewType.SUMMARY.ordinal -> SummaryViewHolder(
+                LayoutInflater.from(parent.context).inflate(
+                    R.layout.adapter_response_summary,
+                    parent,
+                    false
+                )
+            )
             else -> TextViewHolder(
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.adapter_response_text,
@@ -61,6 +70,7 @@ class CommResponseAdapter(
             TextUtils.equals(responses[position].type, "text") -> ViewType.TEXT.ordinal
             TextUtils.equals(responses[position].type, "image") -> ViewType.IMAGE.ordinal
             TextUtils.equals(responses[position].type, "url") -> ViewType.URL.ordinal
+            TextUtils.equals(responses[position].type, "summary") -> ViewType.SUMMARY.ordinal
             else -> ViewType.TEXT.ordinal
         }
     }
@@ -92,13 +102,22 @@ class CommResponseAdapter(
                     Utils.startURLActivity(context, responses[position].url.url)
                 }
             }
+            ViewType.SUMMARY.ordinal -> {
+                (holder as SummaryViewHolder).headline.text = responses[position].summary.heading
+                holder.paragraph.text = responses[position].summary.paragraph
+                holder.shareButton.setOnClickListener {
+                    //start share activity
+                    shareSummary(responses[position].summary)
+                }
+            }
         }
     }
 
     enum class ViewType {
         TEXT,
         IMAGE,
-        URL
+        URL,
+        SUMMARY
     }
 
     class TextViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -116,6 +135,12 @@ class CommResponseAdapter(
         var byline: TextView = itemView.findViewById(R.id.tvResponseByline)
         var responseImage: ImageView = itemView.findViewById(R.id.ivResponseURL)
         var responseURL: TextView = itemView.findViewById(R.id.tvResponseURL)
+    }
+
+    class SummaryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var headline: TextView = itemView.findViewById(R.id.tvSummaryHeadline)
+        var paragraph: TextView = itemView.findViewById(R.id.tvSummaryParagraph)
+        var shareButton: TextView = itemView.findViewById(R.id.btnResponseShare)
     }
 
 }

@@ -4,11 +4,13 @@ import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.model.Feedback
 import `in`.co.tattle.khoj.model.queryresponse.QueryResponse
 import `in`.co.tattle.khoj.model.queryresponse.Response
+import `in`.co.tattle.khoj.model.queryresponse.Summary
 import `in`.co.tattle.khoj.ui.adapters.CommResponseAdapter
 import `in`.co.tattle.khoj.ui.adapters.MediaPagerAdapter
 import `in`.co.tattle.khoj.utils.Constants
 import `in`.co.tattle.khoj.utils.Status
 import `in`.co.tattle.khoj.utils.ViewPagerUtils
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -58,6 +60,7 @@ class MessageResponseFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
         setupObservers()
     }
 
+    //setup Observer for the response for the query
     private fun setupObservers() {
         viewModel.getMessageResponse(messageId)
             .observe(viewLifecycleOwner, Observer { queryResponse ->
@@ -79,6 +82,7 @@ class MessageResponseFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
             })
     }
 
+    //show response when API is successful
     private fun showResponse(data: QueryResponse?) {
         layoutError.visibility = GONE
         layoutLoading.visibility = GONE
@@ -130,18 +134,25 @@ class MessageResponseFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
         }
 
         //setup user feedback
-        cardResponse.visibility = VISIBLE
-        if (TextUtils.equals(Constants.POSITIVE, queryResponse.user_feedback)) {
-            rgFeedback.check(rbYes.id)
-        } else if (TextUtils.equals(Constants.NEGATIVE, queryResponse.user_feedback)) {
-            rgFeedback.check(rbNo.id)
+        if (queryResponse.responses.any { Response ->
+                TextUtils.equals(Response.type, "summary")
+            }) {
+            cardFeedback.visibility = VISIBLE
+            if (TextUtils.equals(Constants.POSITIVE, queryResponse.user_feedback)) {
+                rgFeedback.check(rbYes.id)
+            } else if (TextUtils.equals(Constants.NEGATIVE, queryResponse.user_feedback)) {
+                rgFeedback.check(rbNo.id)
+            }
+            rgFeedback.setOnCheckedChangeListener(this)
+        } else {
+            cardFeedback.visibility = GONE
         }
-        rgFeedback.setOnCheckedChangeListener(this)
     }
 
-    private fun setupCommResponseRecycler(media: ArrayList<Response>) {
+    private fun setupCommResponseRecycler(responses: ArrayList<Response>) {
         recyclerCommunityResponse.layoutManager = LinearLayoutManager(requireContext())
-        recyclerCommunityResponse.adapter = CommResponseAdapter(requireContext(), media)
+        recyclerCommunityResponse.adapter =
+            CommResponseAdapter(requireContext(), responses, shareSummary)
     }
 
     private fun showLoading() {
@@ -204,5 +215,16 @@ class MessageResponseFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
                 }
             }
         )
+    }
+
+    private val shareSummary: (summary: Summary) -> Unit = { summary ->
+        val shareIntent = Intent.createChooser(Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, summary.heading + "\n" + summary.url)
+            putExtra(Intent.EXTRA_TITLE, summary.heading)
+            type = "text/plain"
+        }, null)
+        startActivity(shareIntent)
+
     }
 }

@@ -1,8 +1,10 @@
 package `in`.co.tattle.khoj.ui.home.homefragment
 
 import `in`.co.tattle.khoj.R
+import `in`.co.tattle.khoj.model.homenews.ArticleShare
 import `in`.co.tattle.khoj.ui.adapters.HomeNewsAdapter
 import `in`.co.tattle.khoj.utils.Status
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +45,7 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
 
     private fun setupRecyclerView() {
         recyclerHome.layoutManager = LinearLayoutManager(context)
-        homeNewsAdapter = HomeNewsAdapter(requireContext())
+        homeNewsAdapter = HomeNewsAdapter(requireContext(), shareNews)
         recyclerHome.adapter = homeNewsAdapter
     }
 
@@ -104,5 +106,15 @@ class HomeNewsFragment : Fragment(), View.OnClickListener {
         if (view?.id == R.id.imgRefresh) {
             setupObservers()
         }
+    }
+
+    private val shareNews: (articleShare: ArticleShare) -> Unit = { articleShare ->
+        val shareIntent = Intent.createChooser(Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, articleShare.Headline + "\n" + articleShare.source)
+            putExtra(Intent.EXTRA_TITLE, articleShare.Headline)
+            type = "text/plain"
+        }, null)
+        startActivity(shareIntent)
     }
 }
