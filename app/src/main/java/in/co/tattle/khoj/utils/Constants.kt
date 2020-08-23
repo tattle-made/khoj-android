@@ -8,6 +8,7 @@ object Constants {
     const val SELECTED_MEDIA = "selectedMedia"
     const val SCREENSHOTS = "screenshots"
     const val MESSAGE_ID = "messageID"
+    const val QUERY_CHANNEL = "queryChannel"
     const val USER_TOKEN = "userToken"
     const val CREATOR_TOKEN = "creatorToken"
     const val CLIPBOARD = "clipboard"

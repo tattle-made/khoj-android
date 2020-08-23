@@ -3,10 +3,14 @@ package `in`.co.tattle.khoj.ui.splash
 import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.ui.home.HomepageActivity
+import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
 import `in`.co.tattle.khoj.ui.setup.SetupActivity
+import `in`.co.tattle.khoj.utils.Constants
+import `in`.co.tattle.khoj.utils.PreferenceUtils
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.animation.LinearInterpolator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -31,6 +35,9 @@ class SplashActivity : BaseActivity() {
     private fun setupObserver() {
         viewModel.isLoggedInUser.observe(this, Observer { isLoggedInUser ->
             if (isLoggedInUser) {
+                if (intent.hasExtra("queryId")) {
+                    startResponseActivity(intent.getStringExtra("queryId"))
+                }
                 startHomeActivity()
             } else {
                 startSetupActivity()
@@ -57,6 +64,13 @@ class SplashActivity : BaseActivity() {
     private fun startHomeActivity() {
         val intent = Intent(this, HomepageActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
+    private fun startResponseActivity(queryId: String?) {
+        val intent = Intent(this, MessageResponseActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra(Constants.MESSAGE_ID, queryId!!)
         startActivity(intent)
     }
 }

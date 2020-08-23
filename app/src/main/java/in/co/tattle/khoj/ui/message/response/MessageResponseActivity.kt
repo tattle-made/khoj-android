@@ -1,13 +1,13 @@
 package `in`.co.tattle.khoj.ui.message.response
 
+import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.utils.Constants
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_new_message.*
 
-class MessageResponseActivity : AppCompatActivity() {
+class MessageResponseActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

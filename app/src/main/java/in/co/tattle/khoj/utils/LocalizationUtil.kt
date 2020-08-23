@@ -2,28 +2,45 @@ package `in`.co.tattle.khoj.utils
 
 import android.content.Context
 import android.content.res.Configuration
-import android.text.TextUtils
+import android.os.Build
 import java.util.*
 
+
 object LocalizationUtil {
+/*
 
-    fun applyLanguage(context: Context): Context {
-        //get saved language from preferences
-        val language: String = PreferenceUtils.getPrefString(
-            context,
-            PreferenceUtils.SELECTED_LANGUAGE
-        ).toString()
-        if (TextUtils.isEmpty(language)) {
-            return context
+    public static void setLocale(Context c) {
+        setNewLocale(c, getLanguage(c));
+    }
+
+    public static void setNewLocale(Context c, String language) {
+        persistLanguage(c, language);
+        updateResources(c, language);
+    }
+
+    public static String getLanguage(Context c) { ... }
+
+    private static void persistLanguage(Context c, String language) { ... }
+
+*/
+
+    private fun updateResources(
+        context: Context,
+        language: String
+    ): Context? {
+        var context = context
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val res = context.resources
+        val config =
+            Configuration(res.configuration)
+        if (Build.VERSION.SDK_INT >= 17) {
+            config.setLocale(locale)
+            context = context.createConfigurationContext(config)
+        } else {
+            config.locale = locale
+            res.updateConfiguration(config, res.displayMetrics)
         }
-        val savedLocale = Locale(language)
-
-        // as part of creating a new context we also need to override the default locale.
-        Locale.setDefault(savedLocale)
-
-        // creating new configuration with the pref locale
-        val newConfig = Configuration()
-        newConfig.setLocale(savedLocale)
-        return context.createConfigurationContext(newConfig)
+        return context
     }
 }

@@ -45,46 +45,34 @@
         app:layout_constraintStart_toStartOf="@id/tvDate"
         app:layout_constraintTop_toBottomOf="@+id/tvDate">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/top_margin">
-
-            <TextView
-                android:id="@+id/tvTimelineText"
-                style="@style/heading6TextPrimary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/ivTimeline"
-                app:layout_constraintHorizontal_weight="0.65"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/ivTimeline"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/top_margin"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/responses_for_query"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="0.35"
-                app:layout_constraintStart_toEndOf="@id/tvTimelineText"
-                app:layout_constraintTop_toTopOf="@id/tvTimelineText" />
+                android:scaleType="centerCrop" />
 
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrier_bottom"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvTimelineText"
+                style="@style/body1TextPrimary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="tvTimelineText, ivTimeline" />
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:padding="@dimen/top_margin" />
 
             <TextView
                 android:id="@+id/tvTimelineResponse"
                 style="@style/body1TextSecondary"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin"
+                android:layout_margin="@dimen/top_margin"
                 android:background="@drawable/rounded_corner_primary_color"
                 android:padding="8dp"
                 android:text="Response for the query goes here"
@@ -93,7 +81,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/barrier_bottom" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <View

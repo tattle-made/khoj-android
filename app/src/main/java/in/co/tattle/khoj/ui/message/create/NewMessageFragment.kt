@@ -22,7 +22,6 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
@@ -79,7 +78,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
             Intent.ACTION_SEND -> {
                 if (requireActivity().intent.type == "text/plain") {
                     etMessage.setText(requireActivity().intent.getStringExtra(Intent.EXTRA_TEXT))
-                } else if (requireActivity().intent.type == "image/*") {
+                } else if (requireActivity().intent.type!!.startsWith("image/")) {
                     viewModel.addMedia(requireActivity().intent.getParcelableExtra(Intent.EXTRA_STREAM) as Uri)
                 }
             }
@@ -101,7 +100,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
     private fun setupClipboardObserver() {
         viewModel.getClipBoard().observe(viewLifecycleOwner, Observer { clipboardText ->
             if (TextUtils.isEmpty(clipboardText)) {
-                btnRecentlyCopied.visibility = GONE
+                btnRecentlyCopied.visibility = VISIBLE
             } else {
                 btnRecentlyCopied.visibility = VISIBLE
             }

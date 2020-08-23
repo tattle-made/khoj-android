@@ -1,17 +1,13 @@
 package `in`.co.tattle.khoj.ui.message.create
 
+import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_new_message.*
 
 
-class NewMessageActivity : AppCompatActivity() {
+class NewMessageActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

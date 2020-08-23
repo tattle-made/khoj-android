@@ -63,17 +63,10 @@ class HistoryAdapter(val onTimelineClick: (queryId: String) -> Unit) :
             circularProgressDrawable.strokeWidth = 5f
             circularProgressDrawable.centerRadius = 30f
             circularProgressDrawable.start()
-            if (TextUtils.isEmpty(queryHistory[position].question)) {
-                Glide.with(holder.timelineImage.context)
-                    .load(queryHistory[position].media[0].formats.small.url)
-                    .placeholder(circularProgressDrawable)
-                    .into(holder.timelineImage)
-            } else {
-                Glide.with(holder.timelineImage.context)
-                    .load(queryHistory[position].media[0].formats.thumbnail.url)
-                    .placeholder(circularProgressDrawable)
-                    .into(holder.timelineImage)
-            }
+            Glide.with(holder.timelineImage.context)
+                .load(queryHistory[position].media[0].formats.small.url)
+                .placeholder(circularProgressDrawable)
+                .into(holder.timelineImage)
         } else {
             holder.timelineImage.visibility = GONE
         }

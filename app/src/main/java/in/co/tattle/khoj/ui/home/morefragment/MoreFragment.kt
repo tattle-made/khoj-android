@@ -1,8 +1,9 @@
 package `in`.co.tattle.khoj.ui.home.morefragment
 
 import `in`.co.tattle.khoj.R
+import `in`.co.tattle.khoj.ui.home.HomepageActivity
 import `in`.co.tattle.khoj.utils.Constants
-import `in`.co.tattle.khoj.utils.LocalizationUtil
+import `in`.co.tattle.khoj.utils.Constants.HINDI
 import `in`.co.tattle.khoj.utils.PreferenceUtils
 import android.os.Bundle
 import android.text.TextUtils
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.yariksoffice.lingver.Lingver
 import kotlinx.android.synthetic.main.fragment_more.*
 
 class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
@@ -41,7 +43,7 @@ class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
     private fun setupLanguage() {
         val language =
             PreferenceUtils.getPrefString(requireContext(), PreferenceUtils.SELECTED_LANGUAGE)
-        if (TextUtils.equals(language, Constants.HINDI)) {
+        if (TextUtils.equals(language, HINDI)) {
             rgLanguage.check(rbHindi.id)
         } else {
             rgLanguage.check(rbEnglish.id)
@@ -59,9 +61,20 @@ class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
             PreferenceUtils.setPrefString(
                 requireContext(),
                 PreferenceUtils.SELECTED_LANGUAGE,
-                Constants.HINDI
+                HINDI
             )
         }
-        LocalizationUtil.applyLanguage(requireContext())
+
+        Lingver.getInstance().setLocale(
+            requireContext(), PreferenceUtils.getPrefString(
+                requireContext(),
+                PreferenceUtils.SELECTED_LANGUAGE
+            )!!
+        )
+        (requireActivity() as HomepageActivity).changeLanguage()
+        tvChoose.text = getString(R.string.choose_language)
+
+
     }
+
 }

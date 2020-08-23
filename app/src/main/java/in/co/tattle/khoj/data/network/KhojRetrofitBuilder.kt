@@ -4,6 +4,7 @@ import `in`.co.tattle.khoj.utils.Constants
 import `in`.co.tattle.khoj.utils.PreferenceUtils
 import android.content.Context
 import android.text.TextUtils
+import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -35,6 +36,13 @@ class KhojRetrofitBuilder private constructor(private val context: Context) {
                 addInterceptor(
                     Interceptor { chain ->
                         lateinit var token: String
+                        Log.d(
+                            "TESTTTT",
+                            "token " + PreferenceUtils.getPrefString(
+                                context,
+                                PreferenceUtils.USER_TOKEN
+                            )
+                        )
                         if (TextUtils.equals(tokenType, Constants.USER_TOKEN)) {
                             token =
                                 PreferenceUtils.getPrefString(context, PreferenceUtils.USER_TOKEN)!!

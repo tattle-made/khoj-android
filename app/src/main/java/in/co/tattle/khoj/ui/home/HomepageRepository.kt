@@ -6,12 +6,21 @@ import `in`.co.tattle.khoj.model.queryhistory.QueryHistory
 import `in`.co.tattle.khoj.utils.Constants
 import `in`.co.tattle.khoj.utils.PreferenceUtils
 import android.content.Context
+import android.text.TextUtils
 
 class HomepageRepository private constructor(private val context: Context) {
 
     suspend fun getHomepageData(): HomepageResponse {
+        var language = "english"
+        if (TextUtils.equals(
+                Constants.HINDI,
+                PreferenceUtils.getPrefString(context, PreferenceUtils.SELECTED_LANGUAGE)
+            )
+        ) {
+            language = "hindi"
+        }
         return KhojRetrofitBuilder.getInstance(context).getKhojApiService(Constants.USER_TOKEN)
-            .getHomepageData()
+            .getHomepageData(language)
     }
 
     suspend fun getQueryHistory(): QueryHistory {

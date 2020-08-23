@@ -2,6 +2,7 @@ package `in`.co.tattle.khoj.ui.splash
 
 import `in`.co.tattle.khoj.utils.PreferenceUtils
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

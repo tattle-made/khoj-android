@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".ui.KhojApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,9 +16,11 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.message.response.MessageResponseActivity"
+            android:configChanges="locale"
             android:theme="@style/Homepage" />
         <activity
             android:name=".ui.message.create.NewMessageActivity"
+            android:configChanges="locale"
             android:theme="@style/Homepage">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -30,11 +33,16 @@
                 <data android:mimeType="text/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.setup.SetupActivity" />
+        <activity
+            android:name=".ui.setup.SetupActivity"
+            android:configChanges="locale" />
         <activity
             android:name=".ui.IntroActivity"
+            android:configChanges="locale"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,6 +51,7 @@
         </activity>
         <activity
             android:name=".ui.home.HomepageActivity"
+            android:configChanges="locale"
             android:theme="@style/Homepage" />
 
         <service
@@ -52,6 +61,13 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/primaryColor" />
     </application>
 
 </manifest>

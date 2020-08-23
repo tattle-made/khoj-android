@@ -105,4 +105,10 @@ class HomepageActivity : BaseActivity(), View.OnClickListener,
         return false
     }
 
+    fun changeLanguage() {
+        tvHello.text = getString(R.string.toolbar_greeting)
+        tvFactCheck.text = getString(R.string.fact_check_rumors)
+        btnNewMessage.text = getString(R.string.try_it)
+    }
+
 }

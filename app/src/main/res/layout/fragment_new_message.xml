@@ -9,7 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/page_margin"
+        android:layout_marginStart="@dimen/page_margin"
+        android:layout_marginTop="@dimen/page_margin"
+        android:layout_marginEnd="@dimen/page_margin"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -53,7 +56,7 @@
             app:helperText="Add any supporting text or query"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/primaryTextColor"
-            app:layout_constraintBottom_toTopOf="@+id/btnScreenshot">
+            app:layout_constraintBottom_toTopOf="@+id/tvQuick">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMessage"
@@ -62,32 +65,43 @@
                 android:textColor="@color/primaryTextColor" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/tvQuick"
+            style="@style/body1TextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quick_links"
+            app:layout_constraintBottom_toTopOf="@id/btnScreenshot"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnScreenshot"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/top_margin"
-            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:letterSpacing="0"
+            android:minHeight="0dp"
             android:text="@string/choose_screenshot"
             android:textColor="@color/secondaryColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnRecentlyCopied"
+            app:layout_constraintBottom_toTopOf="@id/btnRecentlyCopied"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRecentlyCopied"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:letterSpacing="0"
+            android:minHeight="0dp"
             android:text="@string/use_recently_copied_text"
             android:textColor="@color/secondaryColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnScreenshot" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

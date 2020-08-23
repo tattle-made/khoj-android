@@ -12,8 +12,8 @@ import retrofit2.http.*
 
 interface KhojApiService {
 
-    @GET("/homepages/5f1f865927729c001cc29f05")
-    suspend fun getHomepageData(): HomepageResponse
+    @GET("/homepage/lang/{language}")
+    suspend fun getHomepageData(@Path("language") language: String): HomepageResponse
 
     @Headers("Content-Type: application/json")
     @POST("/auth/local/register")
