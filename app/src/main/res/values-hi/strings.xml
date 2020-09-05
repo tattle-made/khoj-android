@@ -48,4 +48,16 @@
     <string name="media">मीडिया</string>
     <string name="submitting_query">आपकी क्वेरी अपलोड की जा रही है, कृपया प्रतीक्षा करें…</string>
     <string name="media_or_text">कृपया मीडिया चुनें या अपनी क्वेरी टाइप करें</string>
+    <string name="attach_media">चित्र और पाठ संलग्न करें जिन्हें आप सत्यापित करना चाहते हैं</string>
+    <string name="no_queries_found">आपने अभी तक कोई क्वेरी सबमिट नहीं की है</string>
+    <string name="need_permission">आपकी क्वेरी को अधिक सार्थक बनाने के लिए हमें आपकी डिवाइस में संग्रहीत छवियों तक पहुंचने की आपकी अनुमति की आवश्यकता है</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">cancel</string>
+    <string name="choose_from_these">या इन विकल्पों में से चुनें</string>
+    <string name="feedback_registered">प्रतिक्रिया दर्ज की गई</string>
+    <string name="quick_links">त्वरित सम्पक</string>
+    <string name="query_updates">क्वेरी अद्यतन</string>
+    <string name="query_updates_desc">यह चैनल आपके द्वारा पोस्ट किए गए प्रश्नों के बारे में अपडेट देता है</string>
+    <string name="about_us">हमारे बारे में</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
 </resources>

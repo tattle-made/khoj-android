@@ -112,10 +112,4 @@
             app:layout_constraintTop_toBottomOf="@+id/tvError" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="Sample" />
 </FrameLayout>

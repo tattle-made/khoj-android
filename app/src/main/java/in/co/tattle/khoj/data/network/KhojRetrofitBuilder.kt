@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class KhojRetrofitBuilder private constructor(private val context: Context) {
 
     val BASE_URL =
-        "http://a03161e0f542045168aba70c7b733b1c-555991731.ap-south-1.elb.amazonaws.com:1337"
+        "https://khoj-server.tattle.co.in/"
 
 //    val khojApiService: KhojApiService = getRetrofit().create(KhojApiService::class.java)
 
@@ -36,13 +36,6 @@ class KhojRetrofitBuilder private constructor(private val context: Context) {
                 addInterceptor(
                     Interceptor { chain ->
                         lateinit var token: String
-                        Log.d(
-                            "TESTTTT",
-                            "token " + PreferenceUtils.getPrefString(
-                                context,
-                                PreferenceUtils.USER_TOKEN
-                            )
-                        )
                         if (TextUtils.equals(tokenType, Constants.USER_TOKEN)) {
                             token =
                                 PreferenceUtils.getPrefString(context, PreferenceUtils.USER_TOKEN)!!

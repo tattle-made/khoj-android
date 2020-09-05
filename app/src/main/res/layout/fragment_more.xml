@@ -39,4 +39,34 @@
 
     </RadioGroup>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPrivacyPolicy"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/top_margin"
+        android:insetTop="@dimen/top_margin"
+        android:insetBottom="@dimen/top_margin"
+        android:letterSpacing="0"
+        android:minHeight="0dp"
+        android:text="@string/privacy_policy"
+        android:textColor="@color/secondaryColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rgLanguage" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAboutUs"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/top_margin"
+        android:insetTop="@dimen/top_margin"
+        android:insetBottom="@dimen/top_margin"
+        android:letterSpacing="0"
+        android:minHeight="0dp"
+        android:text="@string/about_us"
+        android:textColor="@color/secondaryColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPrivacyPolicy" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

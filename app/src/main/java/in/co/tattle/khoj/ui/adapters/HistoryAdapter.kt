@@ -71,6 +71,16 @@ class HistoryAdapter(val onTimelineClick: (queryId: String) -> Unit) :
             holder.timelineImage.visibility = GONE
         }
 
+        holder.timelineResponse.visibility = GONE
+
+        for (response in queryHistory[position].responses) {
+            if (TextUtils.equals(response.type, "summary")) {
+                holder.timelineResponse.visibility = VISIBLE
+                holder.timelineResponse.text = response.summary.heading
+                break
+            }
+        }
+
         holder.cardMessage.setOnClickListener {
             onTimelineClick(queryHistory[position]._id)
         }

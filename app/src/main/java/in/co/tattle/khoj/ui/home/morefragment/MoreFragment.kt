@@ -73,7 +73,8 @@ class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
         )
         (requireActivity() as HomepageActivity).changeLanguage()
         tvChoose.text = getString(R.string.choose_language)
-
+        btnAboutUs.text = getString(R.string.about_us)
+        btnPrivacyPolicy.text = getString(R.string.privacy_policy)
 
     }
 
