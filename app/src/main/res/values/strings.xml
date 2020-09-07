@@ -10,7 +10,7 @@
     <string name="toolbar_greeting">Hello</string>
     <string name="namaste">नमस्ते</string>
     <string name="fact_check_rumors">We verify messages you receive on Whatsapp</string>
-    <string name="try_it">Try it!</string>
+    <string name="try_it">Try it</string>
     <string name="home">Home</string>
     <string name="history">History</string>
     <string name="More">more</string>
@@ -18,7 +18,7 @@
     <string name="error_occurred">We are encountering error in getting data, please try again in some time</string>
     <string name="loading_data">Working our magic, please wait…</string>
     <string name="refresh">refresh</string>
-    <string name="beware_fake_news">Beware of these fake news articles</string>
+    <string name="beware_fake_news">Beware of These Rumours</string>
     <string name="share_family">Share with your family</string>
     <string name="choose_language">Please select your preferred language</string>
     <string name="choose_language_hin">कृपया अपनी पसंदीदा भाषा चुनें</string>

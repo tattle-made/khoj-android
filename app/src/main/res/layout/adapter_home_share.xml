@@ -10,6 +10,8 @@
         style="@style/heading5TextPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
         android:contentDescription="@string/home"
         android:paddingStart="@dimen/top_margin"
         android:paddingEnd="@dimen/top_margin"
