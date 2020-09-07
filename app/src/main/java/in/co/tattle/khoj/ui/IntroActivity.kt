@@ -97,7 +97,7 @@ class IntroActivity : BaseActivity() {
                 ),
                 IntroObject(
                     getString(R.string.use_khoj_to_fact_check),
-                    R.drawable.ic_illustration_01,
+                    R.drawable.ic_illustration_03,
                     R.anim.zoom
                 )
             )
