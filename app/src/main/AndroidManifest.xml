@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".StaticContentActivity"
+            android:configChanges="locale"
+            android:theme="@style/Homepage" />
+        <activity
             android:name=".ui.message.response.MessageResponseActivity"
             android:configChanges="locale"
             android:theme="@style/Homepage" />
@@ -23,12 +27,16 @@
             android:theme="@style/Homepage">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="image/*" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/*" />
             </intent-filter>
         </activity>
