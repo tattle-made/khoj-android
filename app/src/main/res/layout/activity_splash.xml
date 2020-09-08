@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/iv_tattle_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         android:contentDescription="@string/logo"
         android:src="@drawable/tattle_logo"
         app:layout_constraintBottom_toBottomOf="parent"
