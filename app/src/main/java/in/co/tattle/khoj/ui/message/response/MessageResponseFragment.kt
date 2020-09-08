@@ -124,13 +124,17 @@ class MessageResponseFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
         }
 
         //setup community response
-        if (queryResponse.media.isNotEmpty()) {
+        if (queryResponse.responses.isNotEmpty()) {
             tvCommResponse.visibility = VISIBLE
             recyclerCommunityResponse.visibility = VISIBLE
             setupCommResponseRecycler(queryResponse.responses)
+            ivThankYou.visibility = GONE
+            tvThankYou.visibility = GONE
         } else {
             tvCommResponse.visibility = GONE
             recyclerCommunityResponse.visibility = GONE
+            ivThankYou.visibility = VISIBLE
+            tvThankYou.visibility = VISIBLE
         }
 
         //setup user feedback

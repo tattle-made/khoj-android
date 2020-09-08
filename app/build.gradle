@@ -26,6 +26,12 @@ android {
         }
     }
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }

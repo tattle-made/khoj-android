@@ -22,8 +22,7 @@ class KhojFirebaseService : FirebaseMessagingService() {
         PreferenceUtils.setPrefString(this, PreferenceUtils.FCM_DEVICE_TOKEN, token)
     }
 
-    override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        showNotification(remoteMessage.data)
+    override fun onMessageReceived(remoteMessage: RemoteMessage) { showNotification(remoteMessage.data)
     }
 
     private fun showNotification(

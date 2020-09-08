@@ -61,4 +61,5 @@
     <string name="query_updates_desc">यह चैनल आपके द्वारा पोस्ट किए गए प्रश्नों के बारे में अपडेट देता है</string>
     <string name="about_us">हमारे बारे में जाने</string>
     <string name="privacy_policy">प्राइवेसी पॉलिटी</string>
+    <string name="looking_into_request">हमारी टीम अब आपके मैसेज को जांच रही है। कृपया हमें 3–5 कार्यदिवस दें।</string>
 </resources>

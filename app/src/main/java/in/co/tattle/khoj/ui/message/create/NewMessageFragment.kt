@@ -162,7 +162,7 @@ class NewMessageFragment : Fragment(), View.OnClickListener {
                     }
                     Status.SUCCESS -> {
                         loadingDialog.dismiss()
-                        Toast.makeText(requireContext(), "SUCCESSS", LENGTH_SHORT).show()
+//                        Toast.makeText(requireContext(), "SUCCESS", LENGTH_SHORT).show()
                         startResponseActivity(result.data)
                     }
                     Status.ERROR -> {

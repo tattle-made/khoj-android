@@ -6,11 +6,9 @@ import `in`.co.tattle.khoj.ui.home.HomepageActivity
 import `in`.co.tattle.khoj.ui.message.response.MessageResponseActivity
 import `in`.co.tattle.khoj.ui.setup.SetupActivity
 import `in`.co.tattle.khoj.utils.Constants
-import `in`.co.tattle.khoj.utils.PreferenceUtils
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.animation.LinearInterpolator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -37,8 +35,9 @@ class SplashActivity : BaseActivity() {
             if (isLoggedInUser) {
                 if (intent.hasExtra("queryId")) {
                     startResponseActivity(intent.getStringExtra("queryId"))
+                } else {
+                    startHomeActivity()
                 }
-                startHomeActivity()
             } else {
                 startSetupActivity()
             }

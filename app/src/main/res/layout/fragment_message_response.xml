@@ -46,6 +46,27 @@
                 android:padding="@dimen/top_margin"
                 app:layout_constraintTop_toBottomOf="@id/mediaViewPager" />
 
+            <ImageView
+                android:id="@+id/ivThankYou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/query_updates"
+                android:src="@drawable/ic_mascot_thank_you"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/tvQuestion" />
+
+            <TextView
+                android:id="@+id/tvThankYou"
+                style="@style/body1TextPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/top_margin"
+                android:paddingEnd="@dimen/top_margin"
+                android:text="@string/looking_into_request"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ivThankYou" />
+
             <TextView
                 android:id="@+id/tvCommResponse"
                 style="@style/heading5TextPrimary"

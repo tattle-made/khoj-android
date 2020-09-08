@@ -61,4 +61,5 @@
     <string name="query_updates_desc">This channel gives updates about the queries you have posted</string>
     <string name="about_us">About us</string>
     <string name="privacy_policy">Privacy policy</string>
+    <string name="looking_into_request">Our team is looking into your request now. Please give us 3–5 business days to get back to you.</string>
 </resources>

@@ -4,7 +4,6 @@ import `in`.co.tattle.khoj.utils.Constants
 import `in`.co.tattle.khoj.utils.PreferenceUtils
 import android.content.Context
 import android.text.TextUtils
-import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -29,7 +28,7 @@ class KhojRetrofitBuilder private constructor(private val context: Context) {
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val oktHttpClient = OkHttpClient.Builder()
             .addInterceptor(NetworkConnectionInterceptor(context))
-            .addInterceptor(loggingInterceptor)
+//            .addInterceptor(loggingInterceptor)
 
         if (!TextUtils.isEmpty(tokenType)) {
             oktHttpClient.apply {
