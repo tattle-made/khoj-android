@@ -4,6 +4,7 @@ import `in`.co.tattle.khoj.BaseActivity
 import `in`.co.tattle.khoj.R
 import `in`.co.tattle.khoj.ui.IntroActivity
 import `in`.co.tattle.khoj.utils.Constants
+import `in`.co.tattle.khoj.utils.PreferenceUtils
 import `in`.co.tattle.khoj.utils.Status
 import `in`.co.tattle.khoj.utils.ui.LoadingDialog
 import android.content.Intent
@@ -14,6 +15,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.yariksoffice.lingver.Lingver
 import kotlinx.android.synthetic.main.activity_setup.*
 
 class SetupActivity : BaseActivity(), View.OnClickListener {
@@ -36,13 +38,24 @@ class SetupActivity : BaseActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btnHindi -> {
                 viewModel.setupLanguage(Constants.HINDI)
+                setupLanguage()
                 registerUser(Constants.HINDI)
             }
             R.id.btnEnglish -> {
                 viewModel.setupLanguage(Constants.ENGLISH)
+                setupLanguage()
                 registerUser(Constants.ENGLISH)
             }
         }
+    }
+
+    private fun setupLanguage() {
+        Lingver.getInstance().setLocale(
+            this, PreferenceUtils.getPrefString(
+                this,
+                PreferenceUtils.SELECTED_LANGUAGE
+            )!!
+        )
     }
 
     private fun registerUser(language: String) {
