@@ -53,7 +53,7 @@
             android:layout_marginBottom="@dimen/page_margin"
             android:hint="@string/supporting_text"
             app:boxBackgroundColor="@color/secondaryTextColor"
-            app:helperText="Add any supporting text or query"
+            app:helperText="@string/helper_text"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/primaryTextColor"
             app:layout_constraintBottom_toTopOf="@+id/tvQuick">

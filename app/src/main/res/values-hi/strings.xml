@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Khoj</string>
-    <string name="welcome_to_khoj">खोज ऐप में आपका स्वागत है!</string>
+    <string name="welcome_to_khoj">अपने परिवार को झूटी ख़बरों से बचाएँ </string>
     <string name="logo">logo</string>
     <string name="next">next</string>
-    <string name="use_khoj_to_fact_check">खोज के साथ अफवाहों और झूठी ख़बरों को पहचानना सीखें </string>
+    <string name="use_khoj_to_fact_check">हमारे साथ अफवाहों और झूठी ख़बरों को पहचानना सीखें </string>
     <string name="get_fake_news_list">हमें अपने मैसेज भेजें और हम आपके लिए उनकी जांच करेंगे</string>
     <string name="welcome_to_khoj_intro">खोज के उपयोग से अपने परिवार को अफवाहों से बचाएं </string>
     <string name="hello">Hello</string>
@@ -32,7 +32,8 @@
     <string name="select_image_or_video">पिक्चर या वीडियो चुनें</string>
     <string name="choose_screenshot">स्क्रीनशॉट चुनें</string>
     <string name="or">या</string>
-    <string name="supporting_text">हमारी जांच को आसान बनाने के लिए मैसेज के बारें में कुछ लिखें</string>
+    <string name="supporting_text">मैसेज लिखें</string>
+    <string name="helper_text">हमारी जांच को आसान बनाने के लिए मैसेज के बारें में कुछ लिखें</string>
     <string name="use_recently_copied_text">कॉपी किए टेक्स्ट का उपयोग करें</string>
     <string name="no_media_added">अभी तक कोई पिक्चर या वीडियो नहीं जोड़ा गया!</string>
     <string name="spread_the_word">अपने परिवार  में शेयर करें</string>

@@ -32,7 +32,8 @@
     <string name="select_image_or_video">Select image or video</string>
     <string name="choose_screenshot">Choose from screenshots</string>
     <string name="or">OR</string>
-    <string name="supporting_text">Supporting text</string>
+    <string name="supporting_text">Write message</string>
+    <string name="helper_text">Write any text here that will help us in our investigation</string>
     <string name="use_recently_copied_text">Use recently copied text</string>
     <string name="no_media_added">No media added to the message yet!</string>
     <string name="spread_the_word">Spread the word</string>
