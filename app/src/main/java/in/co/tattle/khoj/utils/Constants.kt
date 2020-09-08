@@ -12,4 +12,7 @@ object Constants {
     const val USER_TOKEN = "userToken"
     const val CREATOR_TOKEN = "creatorToken"
     const val CLIPBOARD = "clipboard"
+    const val CONTENT_TYPE = "contentType"
+    const val ABOUT_US = "aboutUs"
+    const val PRIVACY_POLICY = "privacyPolicy"
 }

@@ -1,10 +1,12 @@
 package `in`.co.tattle.khoj.ui.home.morefragment
 
 import `in`.co.tattle.khoj.R
+import `in`.co.tattle.khoj.StaticContentActivity
 import `in`.co.tattle.khoj.ui.home.HomepageActivity
 import `in`.co.tattle.khoj.utils.Constants
 import `in`.co.tattle.khoj.utils.Constants.HINDI
 import `in`.co.tattle.khoj.utils.PreferenceUtils
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -16,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.yariksoffice.lingver.Lingver
 import kotlinx.android.synthetic.main.fragment_more.*
 
-class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
+class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     companion object {
         fun newInstance() = MoreFragment()
@@ -38,6 +40,8 @@ class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
         setupLanguage()
         rgLanguage.setOnCheckedChangeListener(this)
 
+        btnPrivacyPolicy.setOnClickListener(this)
+        btnAboutUs.setOnClickListener(this)
     }
 
     private fun setupLanguage() {
@@ -76,6 +80,20 @@ class MoreFragment : Fragment(), RadioGroup.OnCheckedChangeListener {
         btnAboutUs.text = getString(R.string.about_us)
         btnPrivacyPolicy.text = getString(R.string.privacy_policy)
 
+    }
+
+    override fun onClick(view: View?) {
+        if (view?.id == R.id.btnAboutUs) {
+            startStaticContentActivity(Constants.ABOUT_US)
+        } else if (view?.id == R.id.btnPrivacyPolicy) {
+            startStaticContentActivity(Constants.PRIVACY_POLICY)
+        }
+    }
+
+    private fun startStaticContentActivity(contentType: String) {
+        val i = Intent(requireContext(), StaticContentActivity::class.java)
+        i.putExtra(Constants.CONTENT_TYPE, contentType)
+        startActivity(i)
     }
 
 }
